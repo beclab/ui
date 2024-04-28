@@ -1,0 +1,61 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Quick Start" />
+
+## Quick Start
+
+In the Vue project where it is needed, run npm install @bytetrade/ui to add it, and then perform a global registration in main.js as follows:
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import templateUi from "@bytetrade/ui";
+const app = createApp(App);
+//组件注册
+app.use(templateUi);
+
+app.mount("#app");
+```
+
+src/css/quasar.variables.scss Import all style variables
+
+```scss
+@import "@bytetrade/ui/lib/styles/quasar.variables.sass";
+```
+
+### Import on demand
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import { BtLoading, BtUploader } from "@bytetrade/ui";
+const app = createApp(App);
+ 
+app.use(BtLoading);
+
+app.mount("#app");
+```
+
+### Globally import in Quasar
+
+```js
+// ./boot/smartEnginEntrance.js
+import { boot } from "quasar/wrappers";
+import BytetradeUi from "@bytetrade/ui";
+
+export default boot(async ({ app }) => {
+  app.use(BytetradeUi);
+});
+```
+
+### Locally import in Quasar
+
+```js
+// ./boot/smartEnginEntrance.js
+import { boot } from "quasar/wrappers";
+import { BtLoading } from "@bytetrade/ui";
+
+export default boot(async ({ app }) => {
+  app.use(BtLoading);
+});
+```

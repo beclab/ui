@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["examples/*"],
+      "~/*": ["packages/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "declaration": true,
+    "noImplicitAny": true,
+    "outDir": "./lib"
+  },
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue"],
+  "exclude": ["node_modules", "packages/**/*.stories.*"]
+}
