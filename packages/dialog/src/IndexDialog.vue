@@ -29,7 +29,7 @@
             </div>
 
             <dialog-footer
-                :okText="okText"
+                :okText="ok"
                 :cancel="cancel"
                 :okStyle="okStyle"
                 :loading="okLoading"
