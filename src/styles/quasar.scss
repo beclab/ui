@@ -1,8 +1,9 @@
 @import "./quasar.variables.sass";
 @import "./quasar.popup.scss";
-
-// @import "~quasar-styl";
-// @import '~quasar-addon-styl';
+@import "./colors-text.sass";
+@import "./colors-bg.sass";
+@import "./variables-text.sass";
+@import "./variables-bg.sass";
 
 .material-symbols-rounded {
 	font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 20;

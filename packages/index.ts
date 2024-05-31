@@ -16,8 +16,10 @@ import BtMenu from "./Menu";
 import BtScrollArea from "./ScrollArea";
 import BtNotify from "./notify";
 import BtDialog from "./dialog";
-import { NotifyDefinedType } from './notify/type'
- 
+import { NotifyDefinedType } from "./notify/type";
+import BtTheme from "./theme";
+import useColor from "./utils/useColor";
+
 const components = [
 	BtButton,
 	BtLoading,
@@ -27,7 +29,8 @@ const components = [
 	VueDragResize,
 	UploadFromFiles,
 	BtMenu,
-	BtScrollArea
+	BtScrollArea,
+	BtTheme
 ];
 
 // const app = createApp(Apps);
@@ -68,7 +71,9 @@ export default {
 	VueDragResize,
 	UploadFromFiles,
 	BtMenu,
-	BtScrollArea
+	BtScrollArea,
+	BtTheme,
+	useColor
 };
 
 export {
@@ -82,6 +87,8 @@ export {
 	BtMenu,
 	BtScrollArea,
 	BtNotify,
-    NotifyDefinedType,
-	BtDialog
+	NotifyDefinedType,
+	BtDialog,
+	BtTheme,
+	useColor
 };

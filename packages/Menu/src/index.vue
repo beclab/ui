@@ -1,5 +1,6 @@
 <template>
 	<div class="bt-menu-container q-pa-md">
+		<Theme :show-theme-toggle="props.showThemeToggle"></Theme>
 		<div class="q-pb-lg" v-if="$slots.header">
 			<slot name="header"></slot>
 		</div>
@@ -14,7 +15,7 @@
 				}"
 			>
 				<div class="row items-center">
-					<div style="flex: 1" class="text-subtitle2 text-grey-5">
+					<div style="flex: 1" class="text-subtitle2 text-ink-3">
 						{{ item.label }}
 					</div>
 					<div>
@@ -84,7 +85,7 @@
 				<MenuItem
 					v-else
 					:activeClass="activeClassConputed"
-                    :same-activeable="sameActiveable"
+					:same-activeable="sameActiveable"
 					:data="child"
 					@select="selectHandler"
 					v-model="link"
@@ -111,6 +112,7 @@ import SubMenu from "./SubMenu.vue";
 import { Item } from "./Menu";
 import ItemLabel from "./ItemLabel.vue";
 import AvatarIcon from "./AvatarIcon.vue";
+import Theme from "../../theme/src/IndexPage.vue";
 
 interface Props {
 	/**
@@ -139,10 +141,12 @@ interface Props {
 	 */
 	hideExpandIcon: boolean;
 
-    sameActiveable: boolean;
+	sameActiveable: boolean;
+	showThemeToggle: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
-    sameActiveable: false
+	sameActiveable: false,
+	showThemeToggle: false
 });
 
 const link = ref(props.defaultActive || props.modelValue);

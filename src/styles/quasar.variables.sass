@@ -1,3 +1,6 @@
+@function --color($color-name)
+  @return var(--q-#{$color-name})
+
 $space-base   : 8px !default
 $space-x-base : $space-base !default
 $space-y-base : $space-base !default
@@ -111,10 +114,12 @@ $red-7 : #FF2626 !default
 $red-8 : #FF0000 !default
 $red-9 : #E50000 !default
 $red-10 : #CC0000 !default
-$red-11 : #ff8a80 !default
-$red-12 : #ff5252 !default
-$red-13 : #ff1744 !default
-$red-14 : #d50000 !default
+$red-11 : #E94847 !default
+$red-12 : #C7403F !default
+$red-13 : #A53836 !default
+$red-14 : #84302D !default
+$red-15 : #622825 !default
+$red-16 : #41201C !default
 $pink : #e91e63 !default
 $pink-1 : #fce4ec !default
 $pink-2 : #f8bbd0 !default
@@ -186,25 +191,29 @@ $blue-7 : #0D5EFF !default
 $blue-8 : #004DE5 !default
 $blue-9 : #0044CC !default
 $blue-10 : #003CB2 !default
-$blue-11 : #82b1ff !default
-$blue-12 : #448aff !default
-$blue-13 : #2979ff !default
-$blue-14 : #2962ff !default
-$light-blue : #03a9f4 !default
-$light-blue-1 : #e1f5fe !default
-$light-blue-2 : #b3e5fc !default
-$light-blue-3 : #81d4fa !default
-$light-blue-4 : #4fc3f7 !default
-$light-blue-5 : #29b6f6 !default
-$light-blue-6 : #03a9f4 !default
-$light-blue-7 : #039be5 !default
-$light-blue-8 : #0288d1 !default
-$light-blue-9 : #0277bd !default
-$light-blue-10 : #01579b !default
-$light-blue-11 : #80d8ff !default
-$light-blue-12 : #40c4ff !default
-$light-blue-13 : #00b0ff !default
-$light-blue-14 : #0091ea !default
+$blue-11 : #316EE7 !default
+$blue-12 : #2E5FC4 !default
+$blue-13 : #2B51A1 !default
+$blue-14 : #28437E !default
+$blue-15 : #25355B !default
+$blue-16 : #222637 !default
+$light-blue : #51AEFF !default
+$light-blue-1 : #EBF5FF !default
+$light-blue-2 : #CCE7FF !default
+$light-blue-3 : #ADD9FF !default
+$light-blue-4 : #8FCBFF !default
+$light-blue-5 : #70BCFF !default
+$light-blue-6 : #51AEFF !default
+$light-blue-7 : #33A0FF !default
+$light-blue-8 : #1492FF !default
+$light-blue-9 : #0083F5 !default
+$light-blue-10 : #0078E0 !default
+$light-blue-11 : #4C9FE7 !default
+$light-blue-12 : #4488C4 !default
+$light-blue-13 : #3D72A1 !default
+$light-blue-14 : #355B7E !default
+$light-blue-15 : #2E455B !default
+$light-blue-16 : #262E37 !default
 $cyan : #00bcd4 !default
 $cyan-1 : #e0f7fa !default
 $cyan-2 : #b2ebf2 !default
@@ -231,10 +240,12 @@ $teal-7 : #00AB72 !default
 $teal-8 : #009664 !default
 $teal-9 : #008257 !default
 $teal-10 : #006E49 !default
-$teal-11 : #a7ffeb !default
-$teal-12 : #64ffda !default
-$teal-13 : #1de9b6 !default
-$teal-14 : #00bfa5 !default
+$teal-11 : #03AD90 !default
+$teal-12 : #08947C !default
+$teal-13 : #0C7C67 !default
+$teal-14 : #116352 !default
+$teal-15 : #164A3D !default
+$teal-16 : #1A3129 !default
 $green : #29CC5F !default
 $green-1 : #E5FFEE !default
 $green-2 : #C2FFD6 !default
@@ -246,10 +257,12 @@ $green-7 : #0ABF46 !default
 $green-8 : #00B23B !default
 $green-9 : #009933 !default
 $green-10 : #00802A !default
-$green-11 : #b9f6ca !default
-$green-12 : #69f0ae !default
-$green-13 : #00e676 !default
-$green-14 : #00c853 !default
+$green-11 : #28BA58 !default
+$green-12 : #279F4C !default
+$green-13 : #258441 !default
+$green-14 : #236936 !default
+$green-15 : #224E2B !default
+$green-16 : #20331F !default
 $light-green : #2EE58A !default
 $light-green-1 : #E5FFF2 !default
 $light-green-2 : #C8FAE1 !default
@@ -261,10 +274,12 @@ $light-green-7 : #21D97D !default
 $light-green-8 : #14CC71 !default
 $light-green-9 : #0ABF65 !default
 $light-green-10 : #00B25A !default
-$light-green-11 : #ccff90 !default
-$light-green-12 : #b2ff59 !default
-$light-green-13 : #76ff03 !default
-$light-green-14 : #64dd17 !default
+$light-green-11 : #2CD07E !default
+$light-green-12 : #2AB26D !default
+$light-green-13 : #28935B !default
+$light-green-14 : #267449 !default
+$light-green-15 : #245637 !default
+$light-green-16 : #213726 !default
 $lime : #cddc39 !default
 $lime-1 : #f9fbe7 !default
 $lime-2 : #f0f4c3 !default
@@ -291,10 +306,12 @@ $yellow-7 : #F2DC18 !default
 $yellow-8 : #E5CE00 !default
 $yellow-9 : #D9C300 !default
 $yellow-10 : #CCB700 !default
-$yellow-11 : #ffff8d !default
-$yellow-12 : #ffff00 !default
-$yellow-13 : #ffea00 !default
-$yellow-14 : #ffd600 !default
+$yellow-11 : #E9D637 !default
+$yellow-12 : #C7B631 !default
+$yellow-13 : #A5972B !default
+$yellow-14 : #847726 !default
+$yellow-15 : #625720 !default
+$yellow-16 : #41381A !default
 $amber : #ffc107 !default
 $amber-1 : #fff8e1 !default
 $amber-2 : #ffecb3 !default
@@ -321,10 +338,12 @@ $orange-7 : #FF5E0D !default
 $orange-8 : #E54D00 !default
 $orange-9 : #CC4400 !default
 $orange-10 : #B23C00 !default
-$orange-11 : #ffd180 !default
-$orange-12 : #ffab40 !default
-$orange-13 : #ff9100 !default
-$orange-14 : #ff6d00 !default
+$orange-11 : #E96E30 !default
+$orange-12 : #C75F2B !default
+$orange-13 : #A55127 !default
+$orange-14 : #844322 !default
+$orange-15 : #62351D !default
+$orange-16 : #412619 !default
 $deep-orange : #ff5722 !default
 $deep-orange-1 : #fbe9e7 !default
 $deep-orange-2 : #ffccbc !default
@@ -366,10 +385,10 @@ $grey-7 : #707070 !default
 $grey-8 : #5C5C5C !default
 $grey-9 : #3D3D3D !default
 $grey-10 : #1F1F1F !default
-$grey-11 : #f5f5f5 !default
-$grey-12 : #eeeeee !default
-$grey-13 : #bdbdbd !default
-$grey-14 : #616161 !default
+$grey-11 : #FAFAFA !default
+$grey-12 : #BDBDBD !default
+$grey-13 : #707070 !default
+$grey-14 : #252525 !default
 $blue-grey : #607d8b !default
 $blue-grey-1 : #eceff1 !default
 $blue-grey-2 : #cfd8dc !default
@@ -553,3 +572,236 @@ $img-content-position           : absolute !default
 $img-content-padding            : 16px !default
 $img-content-color              : #fff !default
 $img-content-background         : rgba(0, 0, 0, .47) !default
+
+
+// add
+
+$background-1-light: #ffffff
+$background-1-dark: $grey-10
+$background-2-light: #ffffff
+$background-2-dark: $grey-14
+$background-3-light: $grey-1
+$background-3-dark: $grey-9
+$background-4-light: $grey-2
+$background-4-dark: $grey-8
+$background-5-light: $grey-3
+$background-5-dark: $grey-7
+$background-6-light: $grey-11
+$background-6-dark: $grey-14
+$background-hover-light: rgba(0, 0, 0, 0.03)
+$background-hover-dark: rgba(255, 255, 255, 0.06)
+$background-selected-light: rgba(0, 0, 0, 0.1)
+$background-selected-dark: rgba(255, 255, 255, 0.1)
+$separator-light: rgba(0, 0, 0, 0.1)
+$separator-dark: rgba(255, 255, 255, 0.1)
+$separator-2-light: $grey-2
+$separator-2-dark: $grey-9
+$ink-1-light: $grey-10
+$ink-1-dark: $grey-3
+$ink-2-light: $grey-8
+$ink-2-dark: $grey-5
+$ink-3-light: $grey-5
+$ink-3-dark: $grey-7
+$ink-on-brand-light: #ffffff
+$ink-on-brand-dark: #ffffff
+$ink-on-brand-disabled-light: #ffffff
+$ink-on-brand-disabled-dark: rgba(255, 255, 255, 0.4)
+$input-bg-disabled-light: rgba(0, 0, 0, 0.03)
+$input-bg-disabled-dark: rgba(255, 255, 255, 0.06)
+$input-stroke-light: rgba(0, 0, 0, 0.1)
+$input-stroke-dark: rgba(255, 255, 255, 0.2)
+$input-stroke-hover-light: rgba(0, 0, 0, 0.2)
+$input-stroke-hover-dark: rgba(255, 255, 255, 0.3)
+$input-stroke-disabled-light: rgba(0, 0, 0, 0.05)
+$input-stroke-disabled-dark: rgba(255, 255, 255, 0.1)
+$radio-stroke-light: rgba(0, 0, 0, 0.2)
+$radio-stroke-dark: rgba(255, 255, 255, 0.3)
+$radio-stroke-hover-light: rgba(0, 0, 0, 0.3)
+$radio-stroke-hover-dark: rgba(255, 255, 255, 0.4)
+$radio-stroke-disabled-light: rgba(0, 0, 0, 0.1)
+$radio-stroke-disabled-dark: rgba(255, 255, 255, 0.2)
+$btn-bg-hover-light: rgba(0, 0, 0, 0.02)
+$btn-bg-hover-dark: rgba(255, 255, 255, 0.04)
+$btn-bg-pressed-light: rgba(0, 0, 0, 0.04)
+$btn-bg-pressed-dark: rgba(255, 255, 255, 0.08)
+$btn-stroke-light: rgba(0, 0, 0, 0.1)
+$btn-stroke-dark: rgba(255, 255, 255, 0.2)
+$btn-stroke-hover-light: rgba(0, 0, 0, 0.2)
+$btn-stroke-hover-dark: rgba(255, 255, 255, 0.3)
+$btn-stroke-disabled-light: rgba(0, 0, 0, 0.05)
+$btn-stroke-disabled-dark: rgba(255, 255, 255, 0.1)
+$orange-soft-light: $orange-1
+$orange-soft-dark: $orange-16
+$orange-alpha-light: rgba($orange-6, 0.1)
+$orange-alpha-dark: rgba($orange-11, 0.1)
+$orange-default-light: $orange-6
+$orange-default-dark: $orange-11
+$orange-hover-light: $orange-7
+$orange-hover-dark: $orange-6
+$orange-pressed-light: $orange-8
+$orange-pressed-dark: $orange-5
+$orange-disabled-light: $orange-3
+$orange-disabled-dark: $orange-14
+$blue-soft-light: $blue-1
+$blue-soft-dark: $blue-16
+$blue-alpha-light: rgba($blue-6, 0.1)
+$blue-alpha-dark: rgba($blue-11, 0.1)
+$blue-default-light: $blue-6
+$blue-default-dark: $blue-11
+$blue-hover-light: $blue-7
+$blue-hover-dark: $blue-6
+$blue-pressed-light: $blue-8
+$blue-pressed-dark: $blue-5
+$blue-disabled-light: $blue-3
+$blue-disabled-dark: $blue-14
+$red-soft-light: $red-1
+$red-soft-dark: $red-16
+$red-alpha-light: rgba($red-6, 0.1)
+$red-alpha-dark: rgba($red-11, 0.1)
+$red-default-light: $red-6
+$red-default-dark: $red-11
+$red-hover-light: $red-7
+$red-hover-dark: $red-6
+$red-pressed-light: $red-8
+$red-pressed-dark: $red-5
+$red-disabled-light: $red-3
+$red-disabled-dark: $red-14
+$yellow-soft-light: $yellow-1
+$yellow-soft-dark: $yellow-16
+$yellow-alpha-light: rgba($yellow-6, 0.1)
+$yellow-alpha-dark: rgba($yellow-11, 0.1)
+$yellow-default-light: $yellow-6
+$yellow-default-dark: $yellow-11
+$yellow-hover-light: $yellow-7
+$yellow-hover-dark: $yellow-6
+$yellow-pressed-light: $yellow-8
+$yellow-pressed-dark: $yellow-5
+$yellow-disabled-light: $yellow-3
+$yellow-disabled-dark: $yellow-14
+$green-soft-light: $green-1
+$green-soft-dark: $green-16
+$green-alpha-light: rgba($green-6, 0.1)
+$green-alpha-dark: rgba($green-11, 0.1)
+$green-default-light: $green-6
+$green-default-dark: $green-11
+$green-hover-light: $green-7
+$green-hover-dark: $green-6
+$green-pressed-light: $green-8
+$green-pressed-dark: $green-5
+$green-disabled-light: $green-3
+$green-disabled-dark: $green-14
+$teal-soft-light: $teal-1
+$teal-soft-dark: $teal-16
+$teal-alpha-light: rgba($teal-6, 0.1)
+$teal-alpha-dark: rgba($teal-11, 0.1)
+$teal-default-light: $teal-6
+$teal-default-dark: $teal-11
+$teal-hover-light: $teal-7
+$teal-hover-dark: $teal-6
+$teal-pressed-light: $teal-8
+$teal-pressed-dark: $teal-5
+$teal-disabled-light: $teal-3
+$teal-disabled-dark: $teal-14
+$light-blue-soft-light: $light-blue-1
+$light-blue-soft-dark: $light-blue-16
+$light-blue-alpha-light: rgba($light-blue-6, 0.1)
+$light-blue-alpha-dark: rgba($light-blue-11, 0.1)
+$light-blue-default-light: $light-blue-6
+$light-blue-default-dark: $light-blue-11
+$light-blue-hover-light: $light-blue-7
+$light-blue-hover-dark: $light-blue-6
+$light-blue-pressed-light: $light-blue-8
+$light-blue-pressed-dark: $light-blue-5
+$light-blue-disabled-light: $light-blue-3
+$light-blue-disabled-dark: $light-blue-14
+$light-green-soft-light: $light-green-1
+$light-green-soft-dark: $light-green-16
+$light-green-alpha-light: rgba($light-green-6, 0.1)
+$light-green-alpha-dark: rgba($light-green-11, 0.1)
+$light-green-default-light: $light-green-16
+$light-green-default-dark: $light-green-11
+$light-green-hover-light: $light-green-7
+$light-green-hover-dark: $light-green-6
+$light-green-pressed-light: $light-green-8
+$light-green-pressed-dark: $light-green-5
+$light-green-disabled-light: $light-green-3
+$light-green-disabled-dark: $light-green-14
+
+
+// sass with css var
+
+$background-1: --color(background-1) 
+$background-2: --color(background-2) 
+$background-3: --color(background-3) 
+$background-4: --color(background-4) 
+$background-5: --color(background-5) 
+$background-6: --color(background-6) 
+$background-hover: --color(background-hover) 
+$background-selected: --color(background-selected) 
+$separator: --color(separator) 
+$separator-2: --color(separator-2) 
+$ink-1: --color(ink-1) 
+$ink-2: --color(ink-2) 
+$ink-3: --color(ink-3) 
+$ink-on-brand: --color(ink-on-brand) 
+$ink-on-brand-disabled: --color(ink-on-brand-disabled) 
+$input-bg-disabled: --color(input-bg-disabled) 
+$input-stroke: --color(input-stroke) 
+$input-stroke-hover: --color(input-stroke-hover) 
+$input-stroke-disabled: --color(input-stroke-disabled) 
+$radio-stroke: --color(radio-stroke) 
+$radio-stroke-hover: --color(radio-stroke-hover) 
+$radio-stroke-disabled: --color(radio-stroke-disabled) 
+$btn-bg-hover: --color(btn-bg-hover) 
+$btn-bg-pressed: --color(btn-bg-pressed) 
+$btn-stroke: --color(btn-stroke) 
+$btn-stroke-hover: --color(btn-stroke-hover) 
+$btn-stroke-disabled: --color(btn-stroke-disabled) 
+$orange-soft: --color(orange-soft) 
+$orange-alpha: --color(orange-alpha) 
+$orange-default: --color(orange-default) 
+$orange-hover: --color(orange-hover) 
+$orange-pressed: --color(orange-pressed) 
+$orange-disabled: --color(orange-disabled) 
+$blue-soft: --color(blue-soft) 
+$blue-alpha: --color(blue-alpha) 
+$blue-default: --color(blue-default) 
+$blue-hover: --color(blue-hover) 
+$blue-pressed: --color(blue-pressed) 
+$blue-disabled: --color(blue-disabled) 
+$red-soft: --color(red-soft) 
+$red-alpha: --color(red-alpha) 
+$red-default: --color(red-default) 
+$red-hover: --color(red-hover) 
+$red-pressed: --color(red-pressed) 
+$red-disabled: --color(red-disabled) 
+$yellow-soft: --color(yellow-soft) 
+$yellow-alpha: --color(yellow-alpha) 
+$yellow-default: --color(yellow-default) 
+$yellow-hover: --color(yellow-hover) 
+$yellow-pressed: --color(yellow-pressed) 
+$yellow-disabled: --color(yellow-disabled) 
+$green-soft: --color(green-soft) 
+$green-alpha: --color(green-alpha) 
+$green-default: --color(green-default) 
+$green-hover: --color(green-hover) 
+$green-pressed: --color(green-pressed) 
+$green-disabled: --color(green-disabled) 
+$teal-soft: --color(teal-soft) 
+$teal-alpha: --color(teal-alpha) 
+$teal-default: --color(teal-default) 
+$teal-hover: --color(teal-hover) 
+$teal-pressed: --color(teal-pressed) 
+$teal-disabled: --color(teal-disabled) 
+$light-blue-soft: --color(light-blue-soft) 
+$light-blue-alpha: --color(light-blue-alpha) 
+$light-blue-default: --color(light-blue-default) 
+$light-blue-hover: --color(light-blue-hover) 
+$light-blue-pressed: --color(light-blue-pressed) 
+$light-blue-disabled: --color(light-blue-disabled) 
+$light-green-soft: --color(light-green-soft) 
+$light-green-alpha: --color(light-green-alpha) 
+$light-green-default: --color(light-green-default) 
+$light-green-hover: --color(light-green-hover) 
+$light-green-pressed: --color(light-green-pressed) 
+$light-green-disabled: --color(light-green-disabled) 
