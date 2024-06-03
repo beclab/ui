@@ -133,7 +133,25 @@ watchEffect(() => {
 	}
 });
 
-const themeValue = $q.cookies.get(themeModeName);
+function getCookie(name: string){
+    var strcookie = document.cookie;
+    var arrcookie = strcookie.split("; ");
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == name){
+            return arr[1];
+        }
+    }
+    return "";
+}
+
+let themeValue = ''
+if ($q.cookies) {
+    themeValue = $q.cookies.get(themeModeName);
+} else {
+    themeValue = getCookie(themeModeName);
+}
+
 if (themeValue) {
     const theme = Number(themeValue);
     if (theme == ThemeDefinedMode.AUTO) {
@@ -142,6 +160,7 @@ if (themeValue) {
         $q.dark.set(theme == ThemeDefinedMode.DARK);
     }
 }
+
 </script>
 <script lang="ts">
 import { defineComponent } from "vue";
