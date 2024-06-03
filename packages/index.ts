@@ -19,6 +19,7 @@ import BtDialog from "./dialog";
 import { NotifyDefinedType } from "./notify/type";
 import BtTheme from "./theme";
 import useColor from "./utils/useColor";
+import { ThemeDefinedMode, themeCookieMode } from './theme/types'
 
 const components = [
 	BtButton,
@@ -90,5 +91,7 @@ export {
 	NotifyDefinedType,
 	BtDialog,
 	BtTheme,
-	useColor
+	useColor,
+    ThemeDefinedMode,
+    themeCookieMode
 };
