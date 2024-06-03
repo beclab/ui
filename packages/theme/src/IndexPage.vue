@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { watchEffect, ref, defineProps } from "vue";
 import { useQuasar, setCssVar, getCssVar, colors } from "quasar";
+import { themeModeName, ThemeDefinedMode } from '../types';
 
 interface Props {
 	showThemeToggle: boolean;
@@ -129,12 +130,22 @@ watchEffect(() => {
 		});
 	}
 });
+
+const themeValue = $q.cookies.get(themeModeName);
+if (themeValue) {
+    const theme = Number(themeValue);
+    if (theme == ThemeDefinedMode.AUTO) {
+        $q.dark.set('auto');
+    } else {
+        $q.dark.set(theme == ThemeDefinedMode.DARK);
+    }
+}
 </script>
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-	name: "BtTheme"
+    name: "BtTheme"
 });
 </script>
 <style></style>
