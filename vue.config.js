@@ -3,13 +3,13 @@ const path = require("path");
 module.exports = defineConfig({
 	transpileDependencies: ["quasar"],
 
-	pages: {
-		index: {
-			entry: "examples/main.ts",
-			template: "public/index.html",
-			filename: "index.html"
-		}
-	},
+	// pages: {
+	// 	index: {
+	// 		entry: "examples/main.ts",
+	// 		template: "public/index.html",
+	// 		filename: "index.html"
+	// 	}
+	// },
 
 	devServer: {
 	 
