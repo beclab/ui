@@ -107,7 +107,9 @@ const variables = [
 	"light-green-default",
 	"light-green-hover",
 	"light-green-pressed",
-	"light-green-disabled"
+	"light-green-disabled",
+	"ink-on-brand-black",
+	"ink-on-brand-black-disabled"
 ];
 
 const light = variables.map((item) => ({
