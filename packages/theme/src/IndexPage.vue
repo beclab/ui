@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { watchEffect, ref, defineProps } from "vue";
 import { useQuasar, setCssVar, getCssVar, colors } from "quasar";
+import { themeModeName, ThemeDefinedMode } from '../types';
 
 interface Props {
 	showThemeToggle: boolean;
@@ -129,6 +130,30 @@ watchEffect(() => {
 		});
 	}
 });
+
+function getCookie(name: string){
+    var strcookie = document.cookie;//获取cookie字符串
+    var arrcookie = strcookie.split("; ");//分割
+    //遍历匹配
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == name){
+            return arr[1];
+        }
+    }
+    return "";
+}
+
+const themeValue = getCookie(themeModeName); 
+if (themeValue) {
+	const theme = Number(themeValue);
+    if (theme == ThemeDefinedMode.AUTO) {
+	    $q.dark.set('auto');
+	} else {
+		$q.dark.set(theme == ThemeDefinedMode.DARK);
+	}
+}
+
 </script>
 <script lang="ts">
 import { defineComponent } from "vue";

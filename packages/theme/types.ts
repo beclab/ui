@@ -1,7 +1,7 @@
 export enum ThemeDefinedMode {
-    AUTH = 0,
+    AUTO = 0,
     LIGHT = 1,
     DARK = 2
 }
 
-export const themeMode = 'theme_mode';
+export const themeModeName = 'theme_name';
