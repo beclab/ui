@@ -9,7 +9,7 @@
 			{{ title }}
 		</div>
 		<q-space />
-		<q-btn dense flat icon="close" v-close-popup @click="onCancel">
+		<q-btn dense flat icon="close" color="ink-3" v-close-popup @click="onCancel">
 			<q-tooltip>Close</q-tooltip>
 		</q-btn>
 	</q-bar>
@@ -47,7 +47,7 @@ const $q = useQuasar();
 
 <style scoped lang="scss">
 .mobile-title {
-	color: #322f2d;
+	color: $ink-1;
 	font-size: 16px;
 	text-align: center;
 	font-weight: 500;
@@ -56,11 +56,11 @@ const $q = useQuasar();
     text-overflow: ellipsis;
 }
 .bar {
-	background-color: #f8f8f8;
+	background-color: $background-3;
 	.title {
 		height: 18px;
 		line-height: 18px;
-		color: #322f2d;
+		color: $ink-1;
 		font-size: 14px;
         white-space: nowrap;
         overflow: hidden;

@@ -1,1 +1,1 @@
-# Terminus UI Library
+# Terminus UI Library [![npm](https://img.shields.io/npm/v/@bytetrade/ui?style=flat-square)](https://www.npmjs.com/package/@bytetrade/ui)
