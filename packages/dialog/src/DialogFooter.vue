@@ -114,15 +114,15 @@ const onOK = (e: any) => {
 	border-radius: 8px;
 	font-weight: 500;
 	font-size: 12px;
-	background: #ffeb3b;
-	color: #1f1814;
+	background: $yellow-6;
+	color: $yellow-default;
 }
 .but-cancel {
 	border-radius: 8px;
 	font-weight: 500;
 	font-size: 12px;
-	border: 1px solid #e0e0e0;
-	color: #4d4742;
+	border: 1px solid $btn-stroke;
+	color: $ink-2;
 }
 
 .card-action {
@@ -136,8 +136,8 @@ const onOK = (e: any) => {
 	font-size: 16px;
 	font-weight: 500;
 	border-radius: 8px;
-	border: 1px solid #EBEBEB;
-	background: #FFFFFF;
+    border: 1px solid $btn-stroke;
+    color: $ink-2;
 }
 
 .but-mobile-confirm {
@@ -145,6 +145,6 @@ const onOK = (e: any) => {
 		font-size: 16px;
 	font-weight: 500;
 	border-radius: 8px;
-	background:  #FFEB3B;
+	background:  $yellow-6;
 }
 </style>

@@ -18,6 +18,7 @@
                         class="prompt-input"
                         v-model="promptModel"
                         borderless
+                        input-class="text-ink-2"
                         dense
                         :placeholder="prompt.placeholder"
                     />
@@ -134,7 +135,7 @@ const onCancel = () => {
     .card-continer {
         border-radius: 12px;
         .prompt-name {
-            color: rgba(173, 173, 173, 1);
+            color: $ink-3;
             font-size: 12px;
             line-height: 16px;
             overflow: hidden;
@@ -142,7 +143,7 @@ const onCancel = () => {
             white-space: nowrap;
         }
         .prompt-input {
-            border: 1px solid rgba(235, 235, 235, 1);
+            border: 1px solid $input-stroke;
             border-radius: 8px;
             padding: 0 10px;
         }
