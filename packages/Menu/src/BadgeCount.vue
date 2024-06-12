@@ -1,6 +1,6 @@
 <template>
 	<span
-		class="bt-badgecount-container text-subtitle3 q-px-sm"
+		class="bt-badgecount-container text-subtitle3 q-px-sm text-ink-2"
 		:class="[active ? activeClass : '']"
 	>
 		<slot></slot>
@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {});
 <style lang="scss" scoped>
 .bt-badgecount-container {
 	display: inline-block;
-	background: $grey-1;
+	background: $background-hover;
 	border-radius: 8px;
 }
 </style>
