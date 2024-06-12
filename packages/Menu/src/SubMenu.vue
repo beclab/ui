@@ -133,9 +133,8 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import SubMenu from "./SubMenu.vue";
 import MenuItem from "./MenuItem.vue";
-import { Item } from "./Menu.ts";
+import { Item } from "./Menu";
 import ItemLabel from "./ItemLabel.vue";
 import AvatarIcon from "./AvatarIcon.vue";
 
@@ -144,6 +143,8 @@ interface Props {
 	modelValue: string;
 	activeClass: string;
 }
+
+const props = withDefaults(defineProps<Props>(), {});
 
 const active = ref(props.modelValue);
 
@@ -157,11 +158,10 @@ watch(
 const nomal = "8px";
 const unit = "12px";
 
-const props = withDefaults(defineProps<Props>(), {});
 
 const emit = defineEmits(["select", "update:modelValue"]);
 
-const selectHandler = (data) => {
+const selectHandler = (data: {item: {muted: any;}; key: any;}) => {
 	if (!data.item.muted) {
 		emit("update:modelValue", data.key);
 	}
