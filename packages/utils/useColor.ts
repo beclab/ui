@@ -1,4 +1,4 @@
-import { useQuasar, colors } from "quasar";
+import { useQuasar, colors, Dark } from "quasar";
 import { ref, watchEffect } from "vue";
 
 const { getPaletteColor } = colors;
@@ -6,10 +6,11 @@ const $q = useQuasar();
 
 function useColor(variable: string) {
 	const $q = useQuasar();
+	const isDarkActive = $q?.dark || Dark;
 	const color = ref(getPaletteColor(variable));
 
 	watchEffect(() => {
-		color.value = $q.dark.isActive
+		color.value = isDarkActive
 			? getPaletteColor(variable)
 			: getPaletteColor(variable);
 	});
