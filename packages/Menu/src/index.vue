@@ -225,4 +225,7 @@ export default defineComponent({
 		opacity: 0.25;
 	}
 }
+::v-deep(.q-item) {
+	color: $ink-2;
+}
 </style>
