@@ -15,6 +15,11 @@ body {
         $background-5: $grey-3,
         $background-6: $grey-11,
         $background-7: $grey-9,
+        $background-8: $grey-1,
+        $background-9: $grey-10,
+        $background-10: $grey-10,
+        $background-11: $grey-14,
+        $background-12: $grey-8,
         $background-hover: rgba(0, 0, 0, 0.03),
         $background-selected: rgba(0, 0, 0, 0.1),
         $background-alpha: rgba(255, 255, 255, 0.6),
@@ -88,6 +93,8 @@ body {
         $light-green-disabled: $light-green-3,
         $ink-on-brand-black: $grey-10,
         $ink-on-brand-black-disabled: $grey-10,
+        $ink-tooltip: $grey-1,
+        $tooltip-bg: $grey-9
     );
 }
   
@@ -100,6 +107,11 @@ body.body--dark {
         $background-5: $grey-7,
         $background-6: $grey-14,
         $background-7: $grey-1,
+        $background-8: $grey-10,
+        $background-9: #ffffff,
+        $background-10: $grey-1,
+        $background-11: #ffffff,
+        $background-12: $grey-2,
         $background-hover: rgba(255, 255, 255, 0.06),
         $background-selected: rgba(255, 255, 255, 0.1),
         $background-alpha: rgba(255, 255, 255, 0.1),
@@ -173,6 +185,8 @@ body.body--dark {
         $light-green-disabled: $light-green-14,
         $ink-on-brand-black: $grey-10,
         $ink-on-brand-black-disabled: rgba(31, 31, 31, 0.4),
+        $ink-tooltip: $grey-1,
+        $tooltip-bg: $grey-8
     );
 }
 
