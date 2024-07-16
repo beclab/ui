@@ -13,13 +13,17 @@ const styleMapping = {
 
 function addEvents(events) {
 	events.forEach((cb, eventName) => {
-		document.documentElement.addEventListener(eventName, cb);
+		if (typeof document !== 'undefined') {
+			document.documentElement.addEventListener(eventName, cb);
+		}
 	});
 }
 
 function removeEvents(events) {
 	events.forEach((cb, eventName) => {
-		document.documentElement.removeEventListener(eventName, cb);
+		if (typeof document !== 'undefined') {
+			document.documentElement.removeEventListener(eventName, cb);
+		}
 	});
 }
 
@@ -219,7 +223,6 @@ export default {
 		this.currentStick = null;
 	},
 
-	
 	async mounted() {
 		this._uid = this.generateRandomId(8);
 		this.parentElement = this.$el.parentNode;
@@ -255,11 +258,9 @@ export default {
 		addEvents(this.domEvents);
 
 		if (this.dragHandle) {
-			[...this.$el.querySelectorAll(this.dragHandle)].forEach(
-				(dragHandle) => {
-					dragHandle.setAttribute('data-drag-handle', this._uid);
-				}
-			);
+			[...this.$el.querySelectorAll(this.dragHandle)].forEach((dragHandle) => {
+				dragHandle.setAttribute('data-drag-handle', this._uid);
+			});
 		}
 
 		if (this.dragCancel) {
@@ -278,14 +279,17 @@ export default {
 	methods: {
 		generateRandomId(length) {
 			let result = '';
-			let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			let characters =
+				'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 			let charactersLength = characters.length;
 			for (let i = 0; i < length; i++) {
-				result += characters.charAt(Math.floor(Math.random() * charactersLength));
+				result += characters.charAt(
+					Math.floor(Math.random() * charactersLength)
+				);
 			}
 			return result;
 		},
-	
+
 		deselect() {
 			if (this.preventActiveBehavior) {
 				return;
@@ -301,13 +305,9 @@ export default {
 			ev.stopPropagation();
 
 			const pageX =
-				typeof ev.pageX !== 'undefined'
-					? ev.pageX
-					: ev.touches[0].pageX;
+				typeof ev.pageX !== 'undefined' ? ev.pageX : ev.touches[0].pageX;
 			const pageY =
-				typeof ev.pageY !== 'undefined'
-					? ev.pageY
-					: ev.touches[0].pageY;
+				typeof ev.pageY !== 'undefined' ? ev.pageY : ev.touches[0].pageY;
 
 			const { dimensionsBeforeMove } = this;
 
@@ -384,13 +384,9 @@ export default {
 			}
 
 			const pointerX =
-				typeof ev.pageX !== 'undefined'
-					? ev.pageX
-					: ev.touches[0].pageX;
+				typeof ev.pageX !== 'undefined' ? ev.pageX : ev.touches[0].pageX;
 			const pointerY =
-				typeof ev.pageY !== 'undefined'
-					? ev.pageY
-					: ev.touches[0].pageY;
+				typeof ev.pageY !== 'undefined' ? ev.pageY : ev.touches[0].pageY;
 
 			this.saveDimensionsBeforeMove({ pointerX, pointerY });
 
@@ -501,13 +497,9 @@ export default {
 			this.stickDrag = true;
 
 			const pointerX =
-				typeof ev.pageX !== 'undefined'
-					? ev.pageX
-					: ev.touches[0].pageX;
+				typeof ev.pageX !== 'undefined' ? ev.pageX : ev.touches[0].pageX;
 			const pointerY =
-				typeof ev.pageY !== 'undefined'
-					? ev.pageY
-					: ev.touches[0].pageY;
+				typeof ev.pageY !== 'undefined' ? ev.pageY : ev.touches[0].pageY;
 
 			this.saveDimensionsBeforeMove({ pointerX, pointerY });
 
@@ -554,8 +546,7 @@ export default {
 					if (snapToGrid) {
 						newBottom =
 							parentHeight -
-							Math.round((parentHeight - newBottom) / gridY) *
-								gridY;
+							Math.round((parentHeight - newBottom) / gridY) * gridY;
 					}
 
 					break;
@@ -579,8 +570,7 @@ export default {
 					if (snapToGrid) {
 						newRight =
 							parentWidth -
-							Math.round((parentWidth - newRight) / gridX) *
-								gridX;
+							Math.round((parentWidth - newRight) / gridX) * gridX;
 					}
 
 					break;
@@ -597,13 +587,12 @@ export default {
 					break;
 			}
 
-			({ newLeft, newRight, newTop, newBottom } =
-				this.rectCorrectionByLimit({
-					newLeft,
-					newRight,
-					newTop,
-					newBottom
-				}));
+			({ newLeft, newRight, newTop, newBottom } = this.rectCorrectionByLimit({
+				newLeft,
+				newRight,
+				newTop,
+				newBottom
+			}));
 
 			if (this.aspectRatio) {
 				({ newLeft, newRight, newTop, newBottom } =
@@ -656,8 +645,7 @@ export default {
 		},
 
 		calcResizeLimits() {
-			const { aspectFactor, width, height, bottom, top, left, right } =
-				this;
+			const { aspectFactor, width, height, bottom, top, left, right } = this;
 			let { minh: minHeight, minw: minWidth } = this;
 
 			const parentLim = this.parentLimitation ? 0 : null;
@@ -681,24 +669,19 @@ export default {
 				const aspectLimits = {
 					left: {
 						min: left - Math.min(top, bottom) * aspectFactor * 2,
-						max:
-							left + ((height - minHeight) / 2) * aspectFactor * 2
+						max: left + ((height - minHeight) / 2) * aspectFactor * 2
 					},
 					right: {
 						min: right - Math.min(top, bottom) * aspectFactor * 2,
-						max:
-							right +
-							((height - minHeight) / 2) * aspectFactor * 2
+						max: right + ((height - minHeight) / 2) * aspectFactor * 2
 					},
 					top: {
 						min: top - (Math.min(left, right) / aspectFactor) * 2,
 						max: top + ((width - minWidth) / 2 / aspectFactor) * 2
 					},
 					bottom: {
-						min:
-							bottom - (Math.min(left, right) / aspectFactor) * 2,
-						max:
-							bottom + ((width - minWidth) / 2 / aspectFactor) * 2
+						min: bottom - (Math.min(left, right) / aspectFactor) * 2,
+						max: bottom + ((width - minWidth) / 2 / aspectFactor) * 2
 					}
 				};
 
@@ -717,14 +700,8 @@ export default {
 						max: Math.min(limits.top.max, aspectLimits.top.max)
 					};
 					limits.bottom = {
-						min: Math.max(
-							limits.bottom.min,
-							aspectLimits.bottom.min
-						),
-						max: Math.min(
-							limits.bottom.max,
-							aspectLimits.bottom.max
-						)
+						min: Math.max(limits.bottom.min, aspectLimits.bottom.min),
+						max: Math.min(limits.bottom.max, aspectLimits.bottom.max)
 					};
 				}
 			}

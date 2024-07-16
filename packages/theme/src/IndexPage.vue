@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from "vue";
-import { useQuasar } from "quasar";
+import { ref, defineProps } from 'vue';
+import { useQuasar } from 'quasar';
 import { themeModeName, ThemeDefinedMode } from '../types';
 
 interface Props {
@@ -18,7 +18,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	showToggle: false
 });
-
 
 const $q = useQuasar();
 const isDark = ref(false);
@@ -32,41 +31,42 @@ const change = () => {
 	$q.dark.toggle();
 };
 
+function getCookie(name: string) {
+	if (typeof document !== 'undefined') {
+		var strcookie = document.cookie;
+		var arrcookie = strcookie.split('; ');
+		for (var i = 0; i < arrcookie.length; i++) {
+			var arr = arrcookie[i].split('=');
+			if (arr[0] == name) {
+				return arr[1];
+			}
+		}
+	}
 
-function getCookie(name: string){
-    var strcookie = document.cookie;
-    var arrcookie = strcookie.split("; ");
-    for ( var i = 0; i < arrcookie.length; i++) {
-        var arr = arrcookie[i].split("=");
-        if (arr[0] == name){
-            return arr[1];
-        }
-    }
-    return "";
+	return '';
 }
 
-let themeValue = ''
+let themeValue = '';
 if ($q.cookies) {
-    themeValue = $q.cookies.get(themeModeName);
+	themeValue = $q.cookies.get(themeModeName);
 } else {
-    themeValue = getCookie(themeModeName);
+	themeValue = getCookie(themeModeName);
 }
 
 if (themeValue) {
-    const theme = Number(themeValue);
-    if (theme == ThemeDefinedMode.AUTO) {
-        $q.dark.set('auto');
-    } else {
-        $q.dark.set(theme == ThemeDefinedMode.DARK);
-    }
+	const theme = Number(themeValue);
+	if (theme == ThemeDefinedMode.AUTO) {
+		$q.dark.set('auto');
+	} else {
+		$q.dark.set(theme == ThemeDefinedMode.DARK);
+	}
 }
-
 </script>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: "BtTheme"
+	name: 'BtTheme'
 });
 </script>
 <style></style>
