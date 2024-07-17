@@ -28,6 +28,7 @@
     "moment": "^2.29.4",
     "multiformats": "9.6.4",
     "quasar": "^2.6.0",
+    "terminus-sdk-es6": "^0.0.2",
     "vue": "^3.2.13",
     "vue-cropper": "^1.0.8",
     "vue-router": "^4.0.3"
