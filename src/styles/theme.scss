@@ -30,7 +30,7 @@ body {
         $ink-2: $grey-8,
         $ink-3: $grey-5,
         $ink-on-brand: #ffffff,
-        $ink-on-brand-disabled: #ffffff,
+        $ink-on-brand-disabled: rgba(255, 255, 255, 0.4),
         $input-bg-disabled: rgba(0, 0, 0, 0.03),
         $input-stroke: rgba(0, 0, 0, 0.1),
         $input-stroke-hover: rgba(0, 0, 0, 0.2),
@@ -87,12 +87,12 @@ body {
         $light-blue-disabled: $light-blue-3,
         $light-green-soft: $light-green-1,
         $light-green-alpha: rgba($light-green-6, 0.1),
-        $light-green-default: $light-green-16,
+        $light-green-default: $light-green-6,
         $light-green-hover: $light-green-7,
         $light-green-pressed: $light-green-8,
         $light-green-disabled: $light-green-3,
         $ink-on-brand-black: $grey-10,
-        $ink-on-brand-black-disabled: $grey-10,
+        $ink-on-brand-black-disabled: rgba(31, 31, 31, 0.4),
         $ink-tooltip: $grey-1,
         $tooltip-bg: $grey-9
     );
