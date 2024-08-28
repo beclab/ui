@@ -1,13 +1,13 @@
 <template>
   <div style="display: inline-block;">
     <div class="wrap" :style="{width: `${width}px`, height: `${height}px`}">
-      <input 
+      <input
+        v-show="!loading"
         class="quploader" 
         ref="fileUpload"
         @change="selectChange($event)" 
         accept="image/*" 
         type="file"
-        :disabled="loading"
         :multiple="false"
       />
       <slot class="slot"/>
