@@ -6,7 +6,7 @@
         class="quploader" 
         ref="fileUpload"
         @change="selectChange($event)" 
-        accept="image/*" 
+        :accept="accept"
         type="file"
         :multiple="false"
       />
