@@ -6,10 +6,11 @@
         ref="fileUpload"
         @change="selectChange($event)" 
         accept="image/*" 
-        type="file" 
+        type="file"
+        :disabled="loading"
         :multiple="false"
       />
-      <slot class="slot"></slot>
+      <slot class="slot"/>
     </div>
 
 
@@ -90,6 +91,7 @@ export default defineComponent({
     const uploadFile = ref();
     const resultImg = ref('');
     const fileUpload = ref();
+    const loading = ref(false);
 
     const factoryFn = async () => {
       let formData: FormData, config;
@@ -118,12 +120,13 @@ export default defineComponent({
         .then(function (response) {
           context.emit('ok', response.data);
           showCropper.value = false;
-          context.emit('update:model-value', false);
+          loading.value = false;
+          context.emit('loading', false);
         })
         .catch(function (response) {
           context.emit('fail', response.data);
-          showCropper.value = false;
-          context.emit('update:model-value', false);
+          loading.value = false;
+          context.emit('loading', false);
         })
     }
 
@@ -168,7 +171,8 @@ export default defineComponent({
 
     const uploadImg = async (file: string) => {
       uploadFile.value = file;
-      context.emit('update:model-value', true);
+      loading.value = true
+      context.emit('loading', true);
       factoryFn();
     }
 
@@ -177,7 +181,7 @@ export default defineComponent({
       showCropper,
       uploadFile,
       resultImg,
-
+      loading,
       closeDialog,
       uploadImg,
       selectChange,
