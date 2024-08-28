@@ -118,10 +118,12 @@ export default defineComponent({
         .then(function (response) {
           context.emit('ok', response.data);
           showCropper.value = false;
+          context.emit('update:model-value', false);
         })
         .catch(function (response) {
           context.emit('fail', response.data);
           showCropper.value = false;
+          context.emit('update:model-value', false);
         })
     }
 
@@ -166,6 +168,7 @@ export default defineComponent({
 
     const uploadImg = async (file: string) => {
       uploadFile.value = file;
+      context.emit('update:model-value', true);
       factoryFn();
     }
 
