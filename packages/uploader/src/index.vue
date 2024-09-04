@@ -1,6 +1,6 @@
 <template>
-  <div style="display: inline-block;">
-    <div class="wrap" :style="{width: `${width}px`, height: `${height}px`}">
+  <div style="display: inline-block;"  :style="{width: width, height: height}">
+    <div class="wrap" :style="{width: width, height: height}">
       <input
         v-show="!loading"
         class="quploader" 
@@ -35,14 +35,14 @@ export default defineComponent({
   },
   props: {
     width: {
-      type: [Number, String],
+      type: String,
       required: false,
-      default: 100
+      default: '100px'
     },
     height: {
-      type: [Number, String],
+      type: String,
       required: false,
-      default: 100
+      default: '100px'
     },
     action: {
       type: String,
