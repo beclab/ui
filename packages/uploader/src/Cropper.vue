@@ -37,7 +37,7 @@
           <div class="prive-el">
             <div
               class="prive-style"
-              :style="{'width': '150px', 'height': '266px', 'overflow': 'hidden', 'margin': '0 25px', 'display':'flex', 'align-items' : 'center'}">
+              :style="{'width': '200px', 'height': '200px', 'overflow': 'hidden', 'margin': '0 25px', 'display':'flex', 'align-items' : 'center'}">
               <div
                 class="preview"
                 :style="previews.div">
@@ -128,8 +128,9 @@
     const saveImg = () => {
       if (props.imgType === 'blob') {
         cropper.value.getCropBlob((data: any) => {
-          console.log("blobdata", data)
-          context.emit('upload-img', data);
+          console.log("blobdata", data);
+          const file = new File([data], 'cropped-image.png', { type: data.type });
+          context.emit('upload-img', file);
         });
       } else {
         cropper.value.getCropData((data: any) => {
