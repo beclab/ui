@@ -8,6 +8,7 @@
                 :title="title"
                 :icon="icon"
                 :titAlign="titAlign"
+                :platform="platform"
                 @close="onCancel"
             />
 
@@ -34,6 +35,7 @@
                 :cancel="cancel"
                 :okStyle="okStyle"
                 :loading="okLoading"
+                :platform="platform"
                 @close="onCancel"
                 @submit="submit"
             />

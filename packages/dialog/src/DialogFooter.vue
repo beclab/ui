@@ -64,10 +64,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { useQuasar } from 'quasar';
-
-import ConfirmButton from './ConfirmButton.vue';
 
 defineProps({
 	platform: {

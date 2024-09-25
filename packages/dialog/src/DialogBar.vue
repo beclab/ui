@@ -9,7 +9,7 @@
 			{{ title }}
 		</div>
 		<q-space />
-		<q-btn dense flat icon="close" color="ink-3" v-close-popup @click="onCancel">
+		<q-btn dense flat icon="close" color="ink-3" v-close-popup>
 			<q-tooltip>Close</q-tooltip>
 		</q-btn>
 	</q-bar>
