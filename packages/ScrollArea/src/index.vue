@@ -1,17 +1,19 @@
 <template>
-	<q-scroll-area 
-		ref="scrollRef" 
+	<q-scroll-area
+		ref="scrollRef"
 		v-bind="$attrs"
-		:thumb-style="$attrs['thumb-style'] ? $attrs['thumb-style'] : scrollBarStyle.thumbStyle"
+		:thumb-style="
+			$attrs['thumb-style'] ? $attrs['thumb-style'] : scrollBarStyle.thumbStyle
+		"
 	>
 		<slot />
 	</q-scroll-area>
 </template>
 
 <script setup lang="ts">
-import { ref }  from 'vue'
+import { ref } from 'vue';
 
-const scrollRef = ref()
+const scrollRef = ref();
 
 const scrollBarStyle = ref({
 	contentStyle: {},
@@ -21,15 +23,15 @@ const scrollBarStyle = ref({
 		borderRadius: '3px',
 		backgroundColor: '#BCBDBE',
 		width: '6px',
+		height: '6px',
 		opacity: '1'
 	}
 });
-
 </script>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 export default defineComponent({
-	name: "BtScrollArea"
+	name: 'BtScrollArea'
 });
 </script>
