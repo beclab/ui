@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 import { themeModeName, ThemeDefinedMode } from '../types';
 
@@ -61,6 +61,20 @@ if (themeValue) {
 		$q.dark.set(theme == ThemeDefinedMode.DARK);
 	}
 }
+
+const message = (event: any) => {
+	if (event.data.message === 'theme_update') {
+		if (event.data.info.theme.toString() === '1') {
+			$q.dark.set(false);
+		} else {
+			$q.dark.set(true);
+		}
+	}
+};
+
+onMounted(() => {
+	window && window.addEventListener('message', message);
+});
 </script>
 <script lang="ts">
 import { defineComponent } from 'vue';
