@@ -63,7 +63,7 @@ if (themeValue) {
 }
 
 const message = (event: any) => {
-	if (event.data.message === 'theme_update') {
+	if (event.data.message === 'theme_apps_update') {
 		if (event.data.info.theme.toString() === '1') {
 			$q.dark.set(false);
 		} else {
