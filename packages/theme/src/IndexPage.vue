@@ -12,11 +12,13 @@ import { useQuasar } from 'quasar';
 import { themeModeName, ThemeDefinedMode } from '../types';
 
 interface Props {
-	showThemeToggle: boolean;
+	showThemeToggle?: boolean;
+	followingSystem?:boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	showToggle: false
+	showThemeToggle: false,
+	followingSystem: true
 });
 
 const $q = useQuasar();
@@ -63,7 +65,7 @@ if (themeValue) {
 }
 
 const message = (event: any) => {
-	if (event.data.message === 'theme_apps_update') {
+	if (props.followingSystem && event.data.message === 'theme_apps_update') {
 		if (event.data.info.theme.toString() === '1') {
 			$q.dark.set(false);
 		} else {

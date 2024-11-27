@@ -1,6 +1,6 @@
 <template>
 	<div class="bt-menu-container q-pa-md">
-		<Theme :show-theme-toggle="props.showThemeToggle"></Theme>
+		<Theme :show-theme-toggle="props.showThemeToggle" :following-system="props.followingSystem"></Theme>
 		<div class="q-pb-lg" v-if="$slots.header">
 			<slot name="header"></slot>
 		</div>
@@ -143,10 +143,12 @@ interface Props {
 
 	sameActiveable: boolean;
 	showThemeToggle: boolean;
+	followingSystem?:boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
 	sameActiveable: false,
-	showThemeToggle: false
+	showThemeToggle: false,
+	followingSystem: true
 });
 
 const link = ref(props.defaultActive || props.modelValue);
