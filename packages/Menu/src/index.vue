@@ -1,6 +1,6 @@
 <template>
 	<div class="bt-menu-container q-pa-md">
-		<Theme :show-theme-toggle="props.showThemeToggle" :follow-system="props.followSystem"></Theme>
+		<Theme v-if="props.showThemeToggle" :follow-system="props.followSystem"/>
 		<div class="q-pb-lg" v-if="$slots.header">
 			<slot name="header"></slot>
 		</div>
@@ -147,7 +147,7 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
 	sameActiveable: false,
-	showThemeToggle: false,
+	showThemeToggle: true,
 	followSystem: true
 });
 
