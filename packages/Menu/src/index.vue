@@ -1,6 +1,6 @@
 <template>
 	<div class="bt-menu-container q-pa-md">
-		<Theme :show-theme-toggle="props.showThemeToggle" :following-system="props.followSystem"></Theme>
+		<Theme :show-theme-toggle="props.showThemeToggle" :follow-system="props.followSystem"></Theme>
 		<div class="q-pb-lg" v-if="$slots.header">
 			<slot name="header"></slot>
 		</div>
