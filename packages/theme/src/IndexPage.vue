@@ -7,16 +7,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, onMounted } from 'vue';
+import { ref, defineProps, onMounted, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import { themeModeName, ThemeDefinedMode } from '../types';
 
 interface Props {
-	showThemeToggle: boolean;
+	showThemeToggle?: boolean;
+	followSystem?:boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	showToggle: false
+	showThemeToggle: false,
+	followSystem: true
 });
 
 const $q = useQuasar();
@@ -46,24 +48,26 @@ function getCookie(name: string) {
 	return '';
 }
 
-let themeValue = '';
-if ($q.cookies) {
-	themeValue = $q.cookies.get(themeModeName);
-} else {
-	themeValue = getCookie(themeModeName);
-}
-
-if (themeValue) {
-	const theme = Number(themeValue);
-	if (theme == ThemeDefinedMode.AUTO) {
-		$q.dark.set('auto');
+function setTheme() {
+	let themeValue = '';
+	if ($q.cookies) {
+		themeValue = $q.cookies.get(themeModeName);
 	} else {
-		$q.dark.set(theme == ThemeDefinedMode.DARK);
+		themeValue = getCookie(themeModeName);
+	}
+
+	if (themeValue) {
+		const theme = Number(themeValue);
+		if (theme == ThemeDefinedMode.AUTO) {
+			$q.dark.set('auto');
+		} else {
+			$q.dark.set(theme == ThemeDefinedMode.DARK);
+		}
 	}
 }
 
 const message = (event: any) => {
-	if (event.data.message === 'theme_apps_update') {
+	if (props.followSystem && event.data.message === 'theme_apps_update') {
 		if (event.data.info.theme.toString() === '1') {
 			$q.dark.set(false);
 		} else {
@@ -72,9 +76,17 @@ const message = (event: any) => {
 	}
 };
 
+setTheme();
+
 onMounted(() => {
 	window && window.addEventListener('message', message);
 });
+
+watch(()=> props.followSystem, (newValue) => {
+	if(newValue) {
+		setTheme();
+	}
+})
 </script>
 <script lang="ts">
 import { defineComponent } from 'vue';
