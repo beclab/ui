@@ -21,6 +21,7 @@ import { NotifyDefinedType } from "./notify/type";
 import BtTheme from "./theme";
 import useColor from "./utils/useColor";
 import { ThemeDefinedMode, themeModeName } from './theme/types'
+import BtSwitch from "./switch";
 
 const components = [
 	BtButton,
@@ -32,7 +33,8 @@ const components = [
 	UploadFromFiles,
 	BtMenu,
 	BtScrollArea,
-	BtTheme
+	BtTheme,
+	BtSwitch
 ];
 
 // const app = createApp(Apps);
@@ -75,6 +77,7 @@ export default {
 	BtMenu,
 	BtScrollArea,
 	BtTheme,
+	BtSwitch,
 	useColor
 };
 
@@ -91,6 +94,7 @@ export {
 	BtNotify,
 	NotifyDefinedType,
 	BtDialog,
+	BtSwitch,
 	BtTheme,
 	useColor,
     ThemeDefinedMode,
