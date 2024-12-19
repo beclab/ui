@@ -50,8 +50,18 @@
         </div>
 
         <div align="right" class="bottom">
-          <button class="cancel" @click="handleClose" flat color="primary">Cancel</button>
-          <button class="confirm" @click="saveImg" flat color="primary">Confirm</button>
+            <profile-button
+                :default-selected="false"
+                class="text-body3 q-mr-lg"
+                label="Cancel"
+                @click="handleClose"
+            />
+            <profile-button
+                width="75px"
+                class="text-body3 q-mr-lg"
+                label="Confirm"
+                @click="saveImg"
+            />
         </div>
       </div>
     </div>
@@ -63,10 +73,12 @@
   import 'vue-cropper/dist/index.css'
   import { defineComponent, ref } from "vue";
   import { VueCropper } from "vue-cropper";
+  import ProfileButton from "~/uploader/src/ProfileButton.vue";
 
   export default defineComponent({
     name: "MyCropper",
     components: {
+        ProfileButton,
       VueCropper
     },
     props: {
