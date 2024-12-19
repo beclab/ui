@@ -21,6 +21,7 @@ import BtTheme from "./theme";
 import useColor from "./utils/useColor";
 import { ThemeDefinedMode, themeModeName } from './theme/types'
 import BtSwitch from "./switch";
+import BtPopover, { bus } from './popover'
 
 const components = [
 	BtButton,
@@ -33,7 +34,8 @@ const components = [
 	BtMenu,
 	BtScrollArea,
 	BtTheme,
-	BtSwitch
+	BtSwitch,
+	BtPopover
 ];
 
 // const app = createApp(Apps);
@@ -51,6 +53,12 @@ const install = function (app: App) {
 
 	components.map((component) => {
 		app.use(component);
+	});
+
+	app.directive('close-popover', (el, binding, vnode) => {
+		el.addEventListener('click', () => {
+			bus.on('bt-popover-close', undefined);
+		});
 	});
 
 	// app.use(Quasar, {
@@ -77,6 +85,7 @@ export default {
 	BtScrollArea,
 	BtTheme,
 	BtSwitch,
+	BtPopover,
 	useColor
 };
 
@@ -94,6 +103,7 @@ export {
 	NotifyDefinedType,
 	BtDialog,
 	BtSwitch,
+	BtPopover,
 	BtTheme,
 	useColor,
     ThemeDefinedMode,
