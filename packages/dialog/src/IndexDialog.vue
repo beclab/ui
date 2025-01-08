@@ -1,6 +1,6 @@
 <template>
     <q-dialog class="card-dialog" ref="dialogRef">
-        <q-card class="card-continer" :style="{ width: platform === 'web' ? '400px' : '320px' }">
+        <q-card class="card-continer no-shadow" :style="{ width: platform === 'web' ? '400px' : '320px' }">
 
             <!-- <slot name="dialogBar" />   -->
 
