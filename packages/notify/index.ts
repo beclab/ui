@@ -9,9 +9,14 @@ const BtNotify: BtNotifyProps = {
 			this.init(Notify);
 		}
 		if (props.closeTimeout) {
-			this.alwaysShow = this.notify?.create({
+			const notify = this.notify?.create({
 				...props
 			});
+			if (props.notify_id) {
+				this.alwaysShow[props.notify_id] = notify;
+			} else {
+				this.alwaysShow = notify;
+			}
 		} else {
 			this.notify?.create({
 				timeout: 2000,
@@ -20,8 +25,12 @@ const BtNotify: BtNotifyProps = {
 		}
 	},
 
-	hide(): void {
-		this.alwaysShow && this.alwaysShow();
+	hide(props: any): void {
+		if (props.notify_id) {
+			this.alwaysShow[props.notify_id] && this.alwaysShow[props.notify_id]();
+		} else {
+			this.alwaysShow && this.alwaysShow();
+		}
 	},
 
 	async init(notify?: Notify): Promise<void> {
