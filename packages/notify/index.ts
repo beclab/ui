@@ -2,7 +2,9 @@ import { Notify, QSpinner } from 'quasar';
 import { NotifyDefinedType, BtNotifyProps } from './type';
 
 const BtNotify: BtNotifyProps = {
-	alwaysShow: null,
+	alwaysShow: {
+		origin: null
+	},
 	notify: Notify,
 	async show(props: any): Promise<void> {
 		if (!this.notify) {
@@ -15,7 +17,7 @@ const BtNotify: BtNotifyProps = {
 			if (props.notify_id) {
 				this.alwaysShow[props.notify_id] = notify;
 			} else {
-				this.alwaysShow = notify;
+				this.alwaysShow['origin'] = notify;
 			}
 		} else {
 			this.notify?.create({
@@ -29,7 +31,7 @@ const BtNotify: BtNotifyProps = {
 		if (props.notify_id) {
 			this.alwaysShow[props.notify_id] && this.alwaysShow[props.notify_id]();
 		} else {
-			this.alwaysShow && this.alwaysShow();
+			this.alwaysShow['origin'] && this.alwaysShow['origin']();
 		}
 	},
 
