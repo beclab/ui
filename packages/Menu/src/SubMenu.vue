@@ -20,7 +20,6 @@
 					class="q-pr-sm"
 					v-if="item.icon || item.img"
 				>
-					aaa
 					<slot :name="`icon-${item.key}`"></slot>
 					<AvatarIcon :data="item" :active="active === item.key"> </AvatarIcon>
 				</q-item-section>
@@ -132,11 +131,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import MenuItem from "./MenuItem.vue";
-import { Item } from "./Menu";
-import ItemLabel from "./ItemLabel.vue";
-import AvatarIcon from "./AvatarIcon.vue";
+import { ref, watch } from 'vue';
+import MenuItem from './MenuItem.vue';
+import { Item } from './Menu';
+import ItemLabel from './ItemLabel.vue';
+import AvatarIcon from './AvatarIcon.vue';
 
 interface Props {
 	data: Item[];
@@ -155,23 +154,22 @@ watch(
 	}
 );
 
-const nomal = "8px";
-const unit = "12px";
+const nomal = '8px';
+const unit = '12px';
 
+const emit = defineEmits(['select', 'update:modelValue']);
 
-const emit = defineEmits(["select", "update:modelValue"]);
-
-const selectHandler = (data: {item: {muted: any;}; key: any;}) => {
+const selectHandler = (data: { item: { muted: any }; key: any }) => {
 	if (!data.item.muted) {
-		emit("update:modelValue", data.key);
+		emit('update:modelValue', data.key);
 	}
-	emit("select", data);
+	emit('select', data);
 };
 </script>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 export default defineComponent({
-	name: "SubMenu"
+	name: 'SubMenu'
 });
 </script>
