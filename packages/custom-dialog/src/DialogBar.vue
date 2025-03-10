@@ -32,11 +32,6 @@ defineProps({
 		type: String,
 		default: '',
 		required: false
-	},
-	titAlign: {
-		type: String,
-		default: 'left',
-		required: false
 	}
 });
 
