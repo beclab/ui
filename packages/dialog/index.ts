@@ -1,11 +1,11 @@
-import { h } from "vue";
-import { Dialog } from "quasar";
-import { QDialogOptions } from "quasar/dist/types";
+import { h } from 'vue';
+import { Dialog } from 'quasar';
+import { QDialogOptions } from 'quasar/dist/types';
 
-import IndexDialog from "./src/IndexDialog.vue";
+import IndexDialog from './src/IndexDialog.vue';
 interface DialogPropsType extends QDialogOptions {
 	component?: any;
-	platform?: "web" | "mobile";
+	platform?: 'web' | 'mobile';
 	icon?: string;
 	titAlign?: string;
 	okText?: string;
@@ -19,17 +19,17 @@ const BtDialog = {
 	currentDialog: <any>null,
 	dialog: Dialog,
 
-    init(dialog?: Dialog): void {
+	init(dialog?: Dialog): void {
 		if (!dialog) {
-			return
+			return;
 		}
 		this.dialog = dialog;
 	},
 
 	async show(props: DialogPropsType) {
-        if (!this.dialog) {
-            this.init(Dialog)
-        }
+		if (!this.dialog) {
+			this.init(Dialog);
+		}
 		let renderContent: any = null;
 		renderContent = () => {
 			return h(
@@ -48,27 +48,28 @@ const BtDialog = {
 				{
 					default: () =>
 						props.message
-							? h("div", props.message)
-							: h("div", h(props.component))
+							? h('div', props.message)
+							: h('div', h(props.component))
 				}
 			);
-		}
+		};
 
 		if (this.currentDialog) {
 			this.currentDialog = null;
 		}
-			return new Promise((resolve, reject) => {
-				this.currentDialog = this.dialog.create({
+		return new Promise((resolve, reject) => {
+			this.currentDialog = this.dialog
+				.create({
 					...props,
 					component: renderContent
 				})
-					.onOk((res) => {
-						resolve(res);
-					})
-					.onCancel(() => {
-						resolve(false);
-					});
-			});
+				.onOk((res) => {
+					resolve(res);
+				})
+				.onCancel(() => {
+					resolve(false);
+				});
+		});
 	}
 };
 
