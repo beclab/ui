@@ -22,35 +22,58 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 
 ## Examples
 
-### html
+### CustomDialog
 
 ```html
-<bt-custom-dialog
-  ref="CustomRef"
-  title="alert"
-  icon="sym_r_download"
-  :cancel="true"
-  :skip="true"
-  :okLoading="loading"
-  size="medium"
-  :okStyle="{ background: '#FF7733', color: 'white' }"
-  @submit="submit"
->
-  <div>This is a message.</div>
-</bt-custom-dialog>
+<template>
+  <bt-custom-dialog
+    ref="CustomRef"
+    title="alert"
+    icon="sym_r_download"
+    :cancel="true"
+    :skip="true"
+    :okLoading="loading"
+    size="small"
+    :okStyle="{ background: '#FF7733', color: 'white' }"
+    @onSubmit="onSubmit"
+    @onCancel="onCancel"
+  >
+    <div>This is a message.</div>
+  </bt-custom-dialog>
+</template>
+
+<style></style>
+
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import BtCustomDialog from '../../packages/custom-dialog/src/IndexPage.vue';
+
+  const props = defineProps(['item']);
+
+  console.log('props', props.item);
+
+  const CustomRef = ref();
+  const loading = ref(false);
+  const onSubmit = () => {
+    loading.value = true;
+    setTimeout(() => {
+      loading.value = false;
+      CustomRef.value.onDialogOK();
+    }, 2000);
+  };
+
+  const onCancel = () => {
+    // CustomRef.value.onDialogCancel();
+  };
+</script>
 ```
 
-### ts
+### Use Dialog
 
 ```ts
-const CustomRef = ref();
-const loading = ref(false);
-const submit = () => {
-  loading.value = true;
-
-  setTimeout(() => {
-    loading.value = false;
-    CustomRef.value.onDialogOK();
-  }, 2000);
+const openDialog = () => {
+  $q.dialog({
+    component: CustomDialog
+  });
 };
 ```
