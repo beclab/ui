@@ -14,10 +14,13 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 | size | large, medium or small | string | small |  |
 | title | title | string | Alert |  |
 | icon | header bar icon | string |  |  |
-| onSubmit | Confirmed events at the bottom | string \ number | true |  |
-| onCancel | Cancel event at the bottom | string \ number | false |  |
-| onSkip | hide event at the bottom | string \ number | false |  |
-| okLoading | Shown when data is being sent | string \ boolean | false |  |
+| ok | confirm text or concealment of the event | string \ number | true |  |
+| cancel | cancel text or concealment of the event | string \ number | true |  |
+| skip | skip text or concealment of the event | string \ number | true |  |
+| onSubmit | Confirmed events at the bottom | - | true |  |
+| onCancel | Cancel event at the bottom | - | false |  |
+| onSkip | hide event at the bottom | - | false |  |
+| okLoading | Shown when data is being sent | - | false |  |
 | okStyle | Confirm the style of the button | Object |  |  |
 
 ## Examples

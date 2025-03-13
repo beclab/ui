@@ -21,7 +21,7 @@
         {{ cancel === true ? 'Cancel' : cancel }}
       </q-item>
       <q-item
-        v-if="loading"
+        v-if="ok && loading"
         dense
         class="but-create row justify-center items-center"
         :style="okStyle"
@@ -29,7 +29,7 @@
         {{ loading === true ? 'Loading' : loading }}
       </q-item>
       <q-item
-        v-else
+        v-if="ok && !loading"
         clickable
         dense
         class="but-create row justify-center items-center"
