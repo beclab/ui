@@ -32,8 +32,6 @@ const scrollBarStyle = ref({
 const emits = defineEmits(['scroll']);
 
 const scroll = (info: any) => {
-  console.log('info', info);
-
   emits('scroll', info);
 };
 

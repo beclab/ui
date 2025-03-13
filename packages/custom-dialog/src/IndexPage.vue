@@ -40,7 +40,6 @@ import DialogFooter from './DialogFooter.vue';
 import { Platform, Size } from './type';
 
 interface Props {
-  showDialog: boolean;
   platform: Platform;
   size: Size;
   title: string;
@@ -52,7 +51,6 @@ interface Props {
   skip: string | boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
-  showDialog: false,
   platform: Platform.WEB,
   size: Size.SMALL,
   ok: true,
