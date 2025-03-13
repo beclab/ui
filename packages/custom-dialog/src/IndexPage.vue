@@ -92,7 +92,6 @@ const onCancel = () => {
 
 const onSkip = () => {
   emits('onSkip');
-  onDialogCancel();
 };
 
 defineExpose({
