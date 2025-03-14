@@ -19,7 +19,7 @@
       class="but-mobile-confirm"
       no-caps
       flat
-      :style="{ width: cancel ? '48%' : '100%' }"
+      :style="{ width: cancel ? '48%' : '100%', ...okStyle }"
     >
       {{ loading === true ? 'Loading' : loading }}
     </q-btn>
@@ -28,7 +28,7 @@
       class="but-mobile-confirm"
       no-caps
       flat
-      :style="{ width: cancel ? '48%' : '100%' }"
+      :style="{ width: cancel ? '48%' : '100%', ...okStyle }"
       @click="onSubmit"
     >
       {{ ok === true ? 'Confirm' : ok }}

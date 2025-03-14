@@ -8,8 +8,8 @@ interface DialogPropsType extends QDialogOptions {
   platform?: 'web' | 'mobile';
   icon?: string;
   titAlign?: string;
-  ok?: string | boolean;
-  cancel?: string | boolean;
+  okText?: string;
+  cancelText?: string;
   okLoading?: boolean;
   okStyle?: any;
   prompt?: any;
@@ -39,8 +39,8 @@ const BtDialog = {
           title: props.title,
           icon: props.icon,
           titAlign: props.titAlign,
-          ok: props.ok,
-          cancel: props.cancel,
+          ok: props.okText,
+          cancel: props.cancelText,
           okLoading: props.okLoading,
           okStyle: props.okStyle,
           prompt: props.prompt
