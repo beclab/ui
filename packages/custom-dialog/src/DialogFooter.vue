@@ -1,5 +1,45 @@
 <template>
-  <q-card-actions class="row justify-end items-center" style="padding: 0">
+  <div
+    v-if="platform === 'mobile'"
+    class="card-action row justify-between items-center"
+  >
+    <q-btn
+      class="but-mobile-cancel"
+      v-if="cancel"
+      no-caps
+      flat
+      :style="{ width: cancel ? '48%' : '100%' }"
+      @click="onCancel"
+    >
+      {{ cancel === true ? 'Cancel' : cancel }}
+    </q-btn>
+
+    <q-btn
+      v-if="loading"
+      class="but-mobile-confirm"
+      no-caps
+      flat
+      :style="{ width: cancel ? '48%' : '100%' }"
+    >
+      {{ loading === true ? 'Loading' : loading }}
+    </q-btn>
+    <q-btn
+      v-else
+      class="but-mobile-confirm"
+      no-caps
+      flat
+      :style="{ width: cancel ? '48%' : '100%' }"
+      @click="onSubmit"
+    >
+      {{ ok === true ? 'Confirm' : ok }}
+    </q-btn>
+  </div>
+
+  <q-card-actions
+    v-else
+    class="row justify-end items-center"
+    style="padding: 0"
+  >
     <q-item
       v-if="skip"
       clickable
@@ -130,5 +170,22 @@ const onSkip = () => {
   .cancel-button {
     width: 48%;
   }
+}
+
+.but-mobile-cancel {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid $btn-stroke;
+  color: $ink-2;
+}
+
+.but-mobile-confirm {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  background: $yellow-6;
 }
 </style>

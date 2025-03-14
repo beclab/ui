@@ -22,6 +22,8 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 | onSkip | hide event at the bottom | - | false |  |
 | okLoading | Shown when data is being sent | - | false |  |
 | okStyle | Confirm the style of the button | Object |  |  |
+| full-width | Maximize width | boolean | false |  |
+| full-height | Maximize height | boolean | false |  |
 
 ## Examples
 

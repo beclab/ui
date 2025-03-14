@@ -1,13 +1,25 @@
 <template>
-  <div class="bar text-ink-1">
+  <div class="mobile-title" v-if="platform === 'mobile'">
+    {{ title }}
+  </div>
+
+  <div v-else class="bar text-ink-1">
     <div class="head row items-center justify-center">
       <q-icon v-if="icon" class="icon q-mr-sm" :name="icon" />
-      <div class="title col text-left">
+      <div class="title col text-ink-1 text-left">
         {{ title }}
       </div>
     </div>
 
-    <q-btn dense flat icon="close" color="ink-3" v-close-popup @click="close">
+    <q-btn
+      class="close-icon btn-size-md btn-no-text"
+      dense
+      flat
+      icon="sym_r_close"
+      color="ink-2"
+      v-close-popup
+      @click="close"
+    >
       <q-tooltip>Close</q-tooltip>
     </q-btn>
   </div>
@@ -70,6 +82,11 @@ const close = () => {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .close-icon {
+    margin-top: -12px;
+    margin-right: -12px;
   }
 }
 </style>

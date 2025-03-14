@@ -1,8 +1,8 @@
 <template>
   <q-dialog class="card-dialog" ref="dialogRef" v-model="show">
     <q-card
-      class="card-container no-shadow"
-      :style="{ width, maxWidth: width }"
+      class="card-container no-shadow column"
+      :style="{ width, maxWidth: width, height }"
     >
       <dialog-bar
         :title="title"
@@ -49,13 +49,17 @@ interface Props {
   cancel: string | boolean;
   okLoading: string | boolean;
   skip: string | boolean;
+  fullWidth: boolean;
+  fullHeight: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   platform: Platform.WEB,
   size: Size.SMALL,
   ok: true,
   okStyle: () => ({}),
-  okLoading: false
+  okLoading: false,
+  fullWidth: false,
+  fullHeight: false
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip']);
@@ -64,8 +68,15 @@ const { dialogRef, onDialogCancel, onDialogOK, onDialogHide } =
   useDialogPluginComponent();
 
 const show = ref(true);
+const widthRatio = ref(0.86);
+const heightRatio = ref(0.75);
 
 const width = computed(() => {
+  if (props.fullWidth) {
+    const innerWidth = window.innerWidth;
+    return innerWidth * widthRatio.value + 'px';
+  }
+
   switch (props.size) {
     case Size.SMALL:
       return '400px';
@@ -79,6 +90,15 @@ const width = computed(() => {
     default:
       return '400px';
   }
+});
+
+const height = computed(() => {
+  if (props.fullHeight) {
+    const innerHeight = window.innerHeight;
+    return innerHeight * heightRatio.value + 'px';
+  }
+
+  return 'auto';
 });
 
 const onSubmit = async () => {
@@ -114,7 +134,8 @@ export default defineComponent({
     border-radius: 12px;
     padding: 20px;
     .dialog-content {
-      padding: 20px 2px 32px;
+      flex: 1;
+      padding: 20px 0 32px;
     }
   }
 }

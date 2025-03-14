@@ -26,7 +26,7 @@
             :placeholder="prompt.placeholder"
           />
         </div>
-        <div v-else class="message">
+        <div v-else class="message text-ink-2 text-body2">
           {{ message }}
           <slot />
         </div>
@@ -136,7 +136,7 @@ const onCancel = () => {
     border-radius: 12px;
     padding: 20px;
     .dialog-content {
-      padding: 20px 2px 32px;
+      padding: 20px 0 32px;
     }
     .prompt-name {
       color: $ink-3;
