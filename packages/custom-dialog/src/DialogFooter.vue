@@ -140,6 +140,7 @@ const onSkip = () => {
   font-weight: 500;
   background: $yellow-6;
   color: $grey-10;
+  font-size: 16px;
   padding: 8px 0;
   line-height: 24px;
   margin-left: 12px;
@@ -150,6 +151,7 @@ const onSkip = () => {
   font-weight: 500;
   border: 1px solid $btn-stroke;
   color: $ink-2;
+  font-size: 16px;
   padding: 8px 0;
   line-height: 24px;
 }
@@ -160,6 +162,7 @@ const onSkip = () => {
   left: 20px;
   border-radius: 8px;
   font-weight: 500;
+  font-size: 16px;
   border: 1px solid $btn-stroke;
   color: $ink-2;
   padding: 8px 0;
