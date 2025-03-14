@@ -21,6 +21,7 @@ import BtTheme from "./theme";
 import useColor from "./utils/useColor";
 import { ThemeDefinedMode, themeModeName } from './theme/types'
 import BtSwitch from "./switch";
+import BtTerminal from "./Terminal";
 import BtPopover, { bus } from './popover'
 
 const components = [
@@ -35,7 +36,8 @@ const components = [
 	BtScrollArea,
 	BtTheme,
 	BtSwitch,
-	BtPopover
+	BtPopover,
+	BtTerminal
 ];
 
 // const app = createApp(Apps);
@@ -86,7 +88,8 @@ export default {
 	BtTheme,
 	BtSwitch,
 	BtPopover,
-	useColor
+	useColor,
+	BtTerminal
 };
 
 export {
@@ -107,5 +110,6 @@ export {
 	BtTheme,
 	useColor,
     ThemeDefinedMode,
-    themeModeName
+    themeModeName,
+	BtTerminal
 };
