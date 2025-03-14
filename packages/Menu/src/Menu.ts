@@ -13,3 +13,8 @@ export interface ItemCell {
 export interface Item extends ItemCell {
 	children?: Array<Item>;
 }
+
+
+export type Size = 'sm' | 'md';
+
+export const defaultSize = 'md'

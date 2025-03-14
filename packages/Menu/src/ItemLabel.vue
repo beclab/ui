@@ -1,7 +1,7 @@
 <template>
 	<q-item-section class="bt-itemlabel-container">
 		<q-item-label lines="1">
-			<span class="text-body1">{{ data.label }}</span>
+			<span :class="labelTextClass">{{ data.label }}</span>
 			<BadgeCount
 				v-if="data.count != undefined"
 				class="q-ml-sm"
@@ -14,15 +14,30 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import BadgeCount from "./BadgeCount.vue";
-import { ItemCell } from "./Menu";
+import { defaultSize, ItemCell, Size } from "./Menu";
 
 interface Props {
 	data: ItemCell;
 	active: boolean;
 	activeClass: string;
+	size: Size
 }
-withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<Props>(), {
+	size: defaultSize
+});
+
+const labelTextClass = computed(() => {
+	switch (props.size) {
+		case 'md':
+			return 'text-body1'
+		case 'sm':
+			return 'text-body2'
+		default:
+		return 'text-body1'
+	}
+})
 </script>
 
 <style lang="scss" scoped>

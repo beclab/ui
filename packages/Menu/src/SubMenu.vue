@@ -5,11 +5,7 @@
 			:disable="item.disable"
 			default-opened
 			expand-icon-class="expand-icon-wrapper"
-			:header-style="{
-				padding: '8px',
-				minHeight: '36px',
-				borderRadius: '8px'
-			}"
+			:class="`bt-menu-item-size-${props.size}`"
 			class="q-mt-xs"
 		>
 			<template #header>
@@ -21,12 +17,13 @@
 					v-if="item.icon || item.img"
 				>
 					<slot :name="`icon-${item.key}`"></slot>
-					<AvatarIcon :data="item" :active="active === item.key"> </AvatarIcon>
+					<AvatarIcon :data="item" :active="active === item.key" :size="props.size"> </AvatarIcon>
 				</q-item-section>
 				<ItemLabel
 					:activeClass="activeClass"
 					:data="item"
 					:active="active === item.key"
+					:size="props.size"
 				></ItemLabel>
 				<q-item-section side @click.stop style="padding: 0" class="q-ml-sm">
 					<slot :name="`extra-${item.key}`" :item="item"></slot>
@@ -38,11 +35,7 @@
 					:disable="child.disable"
 					default-opened
 					expand-icon-class="expand-icon-wrapper"
-					:header-style="{
-						padding: '8px',
-						minHeight: '36px',
-						borderRadius: '8px'
-					}"
+					:header-class="`bt-menu-item-size-${props.size}`"
 					class="q-mt-xs"
 				>
 					<template #header>
@@ -53,15 +46,15 @@
 							class="q-pr-sm"
 							v-if="child.icon || child.img"
 						>
-							bbb
 							<slot :name="`icon-${child.key}`"></slot>
-							<AvatarIcon :data="child" :active="active === child.key">
+							<AvatarIcon :data="child" :active="active === child.key" :size="props.size">
 							</AvatarIcon>
 						</q-item-section>
 						<ItemLabel
 							:activeClass="activeClass"
 							:data="child"
 							:active="active === child.key"
+							:size="props.size"
 						></ItemLabel>
 						<q-item-section side @click.stop style="padding: 0" class="q-ml-sm">
 							<slot :name="`extra-${child.key}`" :item="child"></slot>
@@ -73,6 +66,7 @@
 							:style="{ paddingLeft: `calc(${nomal} + ${unit} * 3)` }"
 							:activeClass="activeClass"
 							v-model="active"
+							:size="props.size"
 							@select="selectHandler"
 						>
 							<template v-slot:[`extra-${childDeep.key}`]="scope">
@@ -94,6 +88,7 @@
 					:style="{ paddingLeft: `calc(${nomal} + ${unit} * 2)` }"
 					:activeClass="activeClass"
 					v-model="active"
+					:size="props.size"
 					@select="selectHandler"
 				>
 					<template v-slot:[`extra-${child.key}`]="scope">
@@ -103,7 +98,6 @@
 						v-if="$slots[`icon-${child.key}`]"
 						v-slot:[`icon-${child.key}`]="scope"
 					>
-						ccc
 						<slot :name="`icon-${child.key}`" :item="scope.item"></slot>
 					</template>
 				</MenuItem>
@@ -115,6 +109,7 @@
 			:style="{ paddingLeft: `calc(${nomal} + ${unit})` }"
 			:activeClass="activeClass"
 			v-model="active"
+			:size="props.size"
 			@select="selectHandler"
 		>
 			<template v-slot:[`extra-${item.key}`]="scope">
@@ -133,7 +128,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import MenuItem from './MenuItem.vue';
-import { Item } from './Menu';
+import { defaultSize, Item, Size } from './Menu';
 import ItemLabel from './ItemLabel.vue';
 import AvatarIcon from './AvatarIcon.vue';
 
@@ -141,9 +136,12 @@ interface Props {
 	data: Item[];
 	modelValue: string;
 	activeClass: string;
+	size: Size
 }
 
-const props = withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<Props>(), {
+	size: defaultSize
+});
 
 const active = ref(props.modelValue);
 

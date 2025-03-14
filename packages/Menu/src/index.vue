@@ -9,13 +9,13 @@
 				header
 				class="q-py-none q-px-sm"
 				lines="1"
-				:class="[index !== 0 ? 'q-pt-lg' : 0]"
+				:class="[index !== 0 ? topLabelClass : 0]"
 				:style="{
 					marginTop: item.label ? '0px' : '-4px'
 				}"
 			>
 				<div class="row items-center">
-					<div style="flex: 1" class="text-subtitle2 text-ink-3">
+					<div style="flex: 1" class="text-ink-3" :class="topLabelTextClass">
 						{{ item.label }}
 					</div>
 					<div>
@@ -59,13 +59,14 @@
 								v-if="$slots[`icon-${child.key}`]"
 								:name="`icon-${child.key}`"
 							></slot>
-							<AvatarIcon v-else :data="child" :active="link === child.key">
+							<AvatarIcon v-else :data="child" :active="link === child.key" :size="props.size">
 							</AvatarIcon>
 						</q-item-section>
 						<ItemLabel
 							:activeClass="activeClassConputed"
 							:data="child"
 							:active="link === child.key"
+							:size="props.size"
 						></ItemLabel>
 						<q-item-section side @click.stop style="padding: 0" class="q-ml-sm">
 							<slot :name="`extra-${child.key}`" :item="child"></slot>
@@ -74,6 +75,7 @@
 					<SubMenu
 						:activeClass="activeClassConputed"
 						:data="child.children"
+						:size="props.size"
 						@select="selectHandler"
 						v-model="link"
 					>
@@ -87,6 +89,7 @@
 					:activeClass="activeClassConputed"
 					:same-activeable="sameActiveable"
 					:data="child"
+					:size="props.size"
 					@select="selectHandler"
 					v-model="link"
 				>
@@ -109,7 +112,7 @@
 import { ref, computed, watch } from "vue";
 import MenuItem from "./MenuItem.vue";
 import SubMenu from "./SubMenu.vue";
-import { Item } from "./Menu";
+import { defaultSize, Item, Size } from "./Menu";
 import ItemLabel from "./ItemLabel.vue";
 import AvatarIcon from "./AvatarIcon.vue";
 import Theme from "../../theme/src/IndexPage.vue";
@@ -140,21 +143,46 @@ interface Props {
 	 * hideExpandIcon: boolean
 	 */
 	hideExpandIcon: boolean;
-
 	sameActiveable: boolean;
 	showThemeToggle: boolean;
 	followSystem?:boolean;
+	size: Size
 }
 const props = withDefaults(defineProps<Props>(), {
 	sameActiveable: false,
 	showThemeToggle: true,
-	followSystem: true
+	followSystem: true,
+	size: defaultSize
 });
 
 const link = ref(props.defaultActive || props.modelValue);
 const activeClassConputed = computed(
 	() => props.activeClass || "bt-menu-active-link"
 );
+
+const topLabelClass = computed(() => {
+	switch (props.size) {
+		case "md":
+			return "q-pt-lg"
+		case "sm":
+			return 'q-pt-sm'
+		default:
+		return "q-pt-lg"
+	}
+})
+
+const topLabelTextClass = computed(() => {
+	switch (props.size) {
+		case "md":
+			return "text-subtitle2"
+		case "sm":
+			return 'text-subtitle3'
+		default:
+		return "text-subtitle2"
+	}
+})
+
+
 
 watch(
 	() => props.modelValue,
@@ -194,6 +222,17 @@ const selectHandler = (data: {
 const toggleVaule = (value, item) => {
 	emit("toggleVaule", { value, item });
 };
+
+const menuWidthDefault = computed(() => {
+	switch (props.size) {
+		case 'md':
+			return '240px'
+		case 'sm':
+			return '180px'
+		default:
+		return '240px'
+	}
+})
 </script>
 
 <script lang="ts">
@@ -204,9 +243,26 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.bt-menu-item-size-md-var {
+	border-radius: 8px;
+	padding: 8px; 
+	min-height: 36px;
+}
+.bt-menu-item-size-sm-var {
+	border-radius: 4px;
+	padding: 4px 8px;
+	min-height: 32px;
+}
 .bt-menu-container {
-	width: 240px;
+	width: v-bind(menuWidthDefault);
 	color: $grey-8;
+	.bt-menu-item-size-md {
+		@extend .bt-menu-item-size-md-var;
+	}
+	.bt-menu-item-size-sm {
+		@extend .bt-menu-item-size-sm-var;
+	}
+
 	::v-deep(.bt-menu-active-link) {
 		color: $blue-6;
 		background-color: $blue-1;
@@ -230,4 +286,21 @@ export default defineComponent({
 ::v-deep(.q-item) {
 	color: $ink-2;
 }
+::v-deep(.bt-menu-item-size-md .q-expansion-item__container > .q-item) {
+	@extend .bt-menu-item-size-md-var;
+} 
+::v-deep(.bt-menu-item-size-md .q-expansion-item__content > .q-item) {
+	@extend .bt-menu-item-size-md-var;
+} 
+::v-deep(.bt-menu-item-size-sm .q-expansion-item__container > .q-item) {
+	@extend .bt-menu-item-size-sm-var;
+} 
+::v-deep(.bt-menu-item-size-sm .q-expansion-item__content > .q-item) {
+	@extend .bt-menu-item-size-sm-var;
+} 
+
+::v-deep(.bt-menu-item-size-sm .q-item__section--side > .q-icon) {
+	font-size: 18px;
+}
+
 </style>

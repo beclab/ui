@@ -7,20 +7,21 @@
 		:active-class="activeClass"
 		class="rounded-borders q-mt-xs menu-item-wrapper"
 		lines="1"
-		style="border-radius: 8px; padding: 8px; min-height: 36px"
+		:class="[`bt-menu-item-size-${props.size}`]"
 		@click="clickHanlder(data)"
 		@mouseenter="mouseenter(data)"
 		@mouseleave="mouseleave(data)"
 	>
 		<q-item-section avatar class="q-pr-sm" style="min-width: 0" v-if="data.icon || data.img">
 			<slot v-if="$slots[`icon-${data.key}`]" :name="`icon-${data.key}`"></slot>
-			<AvatarIcon v-else :data="data" :active="modelValue === data.key">
+			<AvatarIcon v-else :data="data" :active="modelValue === data.key" :size="props.size">
 			</AvatarIcon>
 		</q-item-section>
 		<ItemLabel
 			:activeClass="activeClass"
 			:data="data"
 			:active="modelValue === data.key"
+			:size="props.size"
 		></ItemLabel>
 		<q-item-section :style="{ opacity: (!data.defaultHide || data.key === mouseItemKey) ? 1 : 0 }" side @click.stop style="padding: 0" class="q-ml-xs">
 			<slot :name="`extra-${data.key}`" :item="data"></slot>
@@ -30,7 +31,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { Item } from "./Menu";
+import { defaultSize, Item, Size } from "./Menu";
 import ItemLabel from "./ItemLabel.vue";
 import AvatarIcon from "./AvatarIcon.vue";
 
@@ -38,11 +39,13 @@ interface Props {
 	data: Item;
 	modelValue: string;
 	activeClass: string;
-    sameActiveable: boolean
+    sameActiveable: boolean,
+	size: Size
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    sameActiveable: false
+    sameActiveable: false,
+	size: defaultSize
 });
 
 const emit = defineEmits(["select", "update:modelValue"]);
