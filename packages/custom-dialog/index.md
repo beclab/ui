@@ -22,6 +22,8 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 | onSkip | hide event at the bottom | - | false |  |
 | okLoading | Shown when data is being sent | - | false |  |
 | okStyle | Confirm the style of the button | Object |  |  |
+| ok-disabled | disabled in ok btn | boolean | false |  |
+| ok-class | custom class in ok btn | string |  |  |
 | full-width | Maximize width | boolean | false |  |
 | full-height | Maximize height | boolean | false |  |
 
@@ -76,17 +78,16 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 
 ### Use Dialog
 
-1. Register the Plugin
-   In your app's entry file (e.g., main.js or main.ts), register the BtCustomDialog plugin:
+1. Register the Plugin In your app's entry file (e.g., main.js or main.ts), register the BtCustomDialog plugin:
+
 ```ts
 app.use(BtCustomDialog, {
-    defaultOkClass: 'my-global-ok-button'
+  defaultOkClass: 'my-global-ok-button'
 });
 ```
 
-2. Open a Dialog
-   To open a dialog, use the $q.dialog method and specify the custom component to display:
-in Usage
+2. Open a Dialog To open a dialog, use the $q.dialog method and specify the custom component to display: in Usage
+
 ```ts
 const openDialog = () => {
   $q.dialog({

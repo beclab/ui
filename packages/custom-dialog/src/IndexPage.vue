@@ -22,6 +22,7 @@
         :loading="okLoading"
         :platform="platform"
         :skip="skip"
+        :okDisabled="okDisabled"
         @onCancel="onCancel"
         @onSubmit="onSubmit"
         @onSkip="onSkip"
@@ -52,6 +53,7 @@ interface Props {
   skip: string | boolean;
   fullWidth: boolean;
   fullHeight: boolean;
+  okDisabled: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   platform: Platform.WEB,
@@ -61,7 +63,8 @@ const props = withDefaults(defineProps<Props>(), {
   okClass: '',
   okLoading: false,
   fullWidth: false,
-  fullHeight: false
+  fullHeight: false,
+  okDisabled: false
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip']);
