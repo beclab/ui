@@ -40,6 +40,7 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
     :okLoading="loading"
     size="small"
     :okStyle="{ background: '#FF7733', color: 'white' }"
+    okClass="global-ok-class"
     @onSubmit="onSubmit"
     @onCancel="onCancel"
   >
@@ -75,6 +76,17 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 
 ### Use Dialog
 
+1. Register the Plugin
+   In your app's entry file (e.g., main.js or main.ts), register the BtCustomDialog plugin:
+```ts
+app.use(BtCustomDialog, {
+    defaultOkClass: 'my-global-ok-button'
+});
+```
+
+2. Open a Dialog
+   To open a dialog, use the $q.dialog method and specify the custom component to display:
+in Usage
 ```ts
 const openDialog = () => {
   $q.dialog({

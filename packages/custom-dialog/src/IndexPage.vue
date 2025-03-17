@@ -46,6 +46,7 @@ interface Props {
   icon: string;
   ok: string | boolean;
   okStyle: object;
+  okClass: string;
   cancel: string | boolean;
   okLoading: string | boolean;
   skip: string | boolean;
@@ -57,6 +58,7 @@ const props = withDefaults(defineProps<Props>(), {
   size: Size.SMALL,
   ok: true,
   okStyle: () => ({}),
+  okClass: '',
   okLoading: false,
   fullWidth: false,
   fullHeight: false

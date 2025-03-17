@@ -36,8 +36,7 @@ const components = [
   BtScrollArea,
   BtTheme,
   BtSwitch,
-  BtPopover,
-  BtCustomDialog
+  BtPopover
 ];
 
 // const app = createApp(Apps);

@@ -65,6 +65,7 @@
         dense
         class="but-create row justify-center items-center"
         :style="okStyle"
+        :class="okButtonClass"
       >
         {{ loading === true ? 'Loading' : loading }}
       </q-item>
@@ -75,6 +76,7 @@
         class="but-create row justify-center items-center"
         @click="onSubmit"
         :style="okStyle"
+        :class="okButtonClass"
       >
         {{ ok === true ? 'Confirm' : ok }}
       </q-item>
@@ -83,9 +85,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useQuasar } from 'quasar';
+import {computed, inject} from "vue";
 
-defineProps({
+const props = defineProps({
   platform: {
     type: String,
     default: 'web',
@@ -98,6 +100,10 @@ defineProps({
   },
   okStyle: {
     type: Object as () => any,
+    required: false
+  },
+  okClass: {
+    type: String,
     required: false
   },
   cancel: {
@@ -117,7 +123,12 @@ defineProps({
   }
 });
 
-const $q = useQuasar();
+const defaultOkClass = inject<string>('defaultOkClass');
+
+const okButtonClass = computed(() => {
+    return props.okClass || defaultOkClass;
+});
+
 const emit = defineEmits(['onCancel', 'onSubmit', 'onSkip']);
 
 const onCancel = () => {
@@ -138,8 +149,6 @@ const onSkip = () => {
   width: 100px;
   border-radius: 8px;
   font-weight: 500;
-  background: $yellow-6;
-  color: $grey-10;
   font-size: 16px;
   padding: 8px 0;
   line-height: 24px;
@@ -189,6 +198,5 @@ const onSkip = () => {
   font-size: 16px;
   font-weight: 500;
   border-radius: 8px;
-  background: $yellow-6;
 }
 </style>
