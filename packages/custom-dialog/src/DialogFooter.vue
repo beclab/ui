@@ -67,6 +67,7 @@
         dense
         class="but-create row justify-center items-center"
         :style="okStyle"
+        :class="{ 'ok-disabled': okDisabled, okButtonClass }"
       >
         {{ loading === true ? 'Loading' : loading }}
       </q-item>
@@ -75,6 +76,7 @@
         clickable
         dense
         class="but-create row justify-center items-center"
+        :class="{ 'ok-disabled': okDisabled, okButtonClass }"
         @click="onSubmit"
         :style="okStyle"
       >
@@ -85,9 +87,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useQuasar } from 'quasar';
+import { computed, inject } from 'vue';
 
-defineProps({
+const props = defineProps({
   platform: {
     type: String,
     default: 'web',
@@ -100,6 +102,10 @@ defineProps({
   },
   okStyle: {
     type: Object as () => any,
+    required: false
+  },
+  okClass: {
+    type: String,
     required: false
   },
   cancel: {
@@ -116,10 +122,20 @@ defineProps({
     type: [String, Boolean],
     default: false,
     required: false
+  },
+  okDisabled: {
+    type: Boolean,
+    default: false,
+    required: false
   }
 });
 
-const $q = useQuasar();
+const defaultOkClass = inject<string>('defaultOkClass');
+
+const okButtonClass = computed(() => {
+  return props.okClass || defaultOkClass;
+});
+
 const emit = defineEmits(['onCancel', 'onSubmit', 'onSkip']);
 
 const onCancel = () => {
@@ -127,6 +143,7 @@ const onCancel = () => {
 };
 
 const onSubmit = (e: any) => {
+  if (props.okDisabled) return;
   emit('onSubmit', e);
 };
 
@@ -137,29 +154,30 @@ const onSkip = () => {
 
 <style scoped lang="scss">
 .but-create {
-  width: 100px;
+  min-width: 100px;
   border-radius: 8px;
   font-weight: 500;
-  background: $yellow-6;
-  color: $grey-10;
   font-size: 16px;
-  padding: 8px 0;
+  padding: 8px;
   line-height: 24px;
   margin-left: 12px;
+  &.ok-disabled {
+    opacity: 0.5;
+  }
 }
 .but-cancel {
-  width: 100px;
+  min-width: 100px;
   border-radius: 8px;
   font-weight: 500;
   border: 1px solid $btn-stroke;
   color: $ink-2;
   font-size: 16px;
-  padding: 8px 0;
+  padding: 7px 8px;
   line-height: 24px;
 }
 
 .but-skip {
-  width: 100px;
+  min-width: 100px;
   position: absolute;
   left: 20px;
   border-radius: 8px;
@@ -167,7 +185,7 @@ const onSkip = () => {
   font-size: 16px;
   border: 1px solid $btn-stroke;
   color: $ink-2;
-  padding: 8px 0;
+  padding: 7px 8px;
   line-height: 24px;
 }
 
@@ -191,6 +209,5 @@ const onSkip = () => {
   font-size: 16px;
   font-weight: 500;
   border-radius: 8px;
-  background: $yellow-6;
 }
 </style>
