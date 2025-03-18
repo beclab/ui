@@ -30,8 +30,7 @@
     "quasar": "^2.6.0",
     "terminus-sdk-es6": "^0.0.2",
     "vue": "^3.2.13",
-    "vue-cropper": "^1.0.8",
-    "vue-router": "^4.0.3"
+    "vue-cropper": "^1.0.8"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",
