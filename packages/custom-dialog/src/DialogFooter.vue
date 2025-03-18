@@ -50,6 +50,8 @@
       {{ skip === true ? 'Skip' : skip }}
     </q-item>
 
+    <slot name="footerMore" />
+
     <div class="row justify-center items-center">
       <q-item
         v-if="cancel"

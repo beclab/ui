@@ -25,7 +25,11 @@
         @onCancel="onCancel"
         @onSubmit="onSubmit"
         @onSkip="onSkip"
-      />
+      >
+        <template #footerMore>
+            <slot name="footerMore" />
+        </template>
+      </dialog-footer>
     </q-card>
   </q-dialog>
 </template>
