@@ -17,6 +17,7 @@
     <q-btn
       v-if="loading"
       class="but-mobile-confirm"
+      :class="okButtonClass"
       no-caps
       flat
       :style="{ width: cancel ? '48%' : '100%', ...okStyle }"
@@ -26,6 +27,7 @@
     <q-btn
       v-else
       class="but-mobile-confirm"
+      :class="okButtonClass"
       no-caps
       flat
       :style="{ width: cancel ? '48%' : '100%', ...okStyle }"
@@ -67,7 +69,7 @@
         dense
         class="but-create row justify-center items-center"
         :style="okStyle"
-        :class="{ 'ok-disabled': okDisabled, okButtonClass }"
+        :class="[okDisabled ? 'ok-disabled' : '', okButtonClass]"
       >
         {{ loading === true ? 'Loading' : loading }}
       </q-item>
@@ -76,7 +78,7 @@
         clickable
         dense
         class="but-create row justify-center items-center"
-        :class="{ 'ok-disabled': okDisabled, okButtonClass }"
+        :class="[okDisabled ? 'ok-disabled' : '', okButtonClass]"
         @click="onSubmit"
         :style="okStyle"
       >

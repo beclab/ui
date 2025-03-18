@@ -23,12 +23,13 @@
         :platform="platform"
         :skip="skip"
         :okDisabled="okDisabled"
+        :okClass="okClass"
         @onCancel="onCancel"
         @onSubmit="onSubmit"
         @onSkip="onSkip"
       >
         <template #footerMore>
-            <slot name="footerMore" />
+          <slot name="footerMore" />
         </template>
       </dialog-footer>
     </q-card>
