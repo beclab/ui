@@ -3,6 +3,7 @@
     v-if="platform === 'mobile'"
     class="card-action row justify-between items-center"
   >
+    <slot name="footerMore" />
     <q-btn
       class="but-mobile-cancel"
       v-if="cancel"
@@ -15,7 +16,7 @@
     </q-btn>
 
     <q-btn
-      v-if="loading"
+       v-if="ok && loading"
       class="but-mobile-confirm"
       :class="okButtonClass"
       no-caps
@@ -25,7 +26,7 @@
       {{ loading === true ? 'Loading' : loading }}
     </q-btn>
     <q-btn
-      v-else
+      v-if="ok && !loading"
       class="but-mobile-confirm"
       :class="okButtonClass"
       no-caps
