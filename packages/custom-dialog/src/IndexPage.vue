@@ -1,5 +1,5 @@
 <template>
-  <q-dialog class="card-dialog" ref="dialogRef" v-model="show">
+  <q-dialog class="card-dialog" ref="dialogRef" v-model="show" @hide="onCancel" :noRouteDismiss="noRouteDismiss">
     <q-card
       class="card-container no-shadow column"
       :style="{ width, maxWidth: width, height }"
@@ -59,6 +59,7 @@ interface Props {
   fullWidth: boolean;
   fullHeight: boolean;
   okDisabled: boolean;
+  noRouteDismiss: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   platform: Platform.WEB,
@@ -69,7 +70,8 @@ const props = withDefaults(defineProps<Props>(), {
   okLoading: false,
   fullWidth: false,
   fullHeight: false,
-  okDisabled: false
+  okDisabled: false,
+  noRouteDismiss: false
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip']);
