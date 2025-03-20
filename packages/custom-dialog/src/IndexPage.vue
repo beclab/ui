@@ -1,5 +1,5 @@
 <template>
-  <q-dialog class="card-dialog" ref="dialogRef" v-model="show" @hide="onCancel" :noRouteDismiss="noRouteDismiss">
+  <q-dialog class="card-dialog" ref="dialogRef" v-model="show" @hide="hiddenDialog" :noRouteDismiss="noRouteDismiss">
     <q-card
       class="card-container no-shadow column"
       :style="{ width, maxWidth: width, height }"
@@ -122,6 +122,10 @@ const onCancel = () => {
   onDialogCancel();
 };
 
+const hiddenDialog = () => {
+  onDialogCancel();
+}
+
 const onSkip = () => {
   emits('onSkip');
 };
@@ -148,6 +152,7 @@ export default defineComponent({
     .dialog-content {
       flex: 1;
       padding: 20px 0 32px;
+      width: 100%;
     }
   }
 }
