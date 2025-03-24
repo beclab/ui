@@ -74,7 +74,7 @@ const props = withDefaults(defineProps<Props>(), {
   noRouteDismiss: false
 });
 
-const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip']);
+const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide']);
 
 const { dialogRef, onDialogCancel, onDialogOK, onDialogHide } =
   useDialogPluginComponent();
@@ -117,13 +117,18 @@ const onSubmit = async () => {
   emits('onSubmit');
 };
 
+let hidden = true;
+
 const onCancel = () => {
+  hidden = false;
   emits('onCancel');
   onDialogCancel();
 };
 
-const hiddenDialog = () => {
-  onDialogCancel();
+const hiddenDialog = () => {      
+  if (hidden) {
+    emits('onHide');
+  }  
 }
 
 const onSkip = () => {
