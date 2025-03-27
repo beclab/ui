@@ -1,5 +1,11 @@
 <template>
-  <q-dialog class="card-dialog" ref="dialogRef" v-model="show" @hide="hiddenDialog" :noRouteDismiss="noRouteDismiss">
+  <q-dialog
+    class="card-dialog"
+    ref="dialogRef"
+    v-model="show"
+    @hide="hiddenDialog"
+    :noRouteDismiss="noRouteDismiss"
+  >
     <q-card
       class="card-container no-shadow column"
       :style="{ width, maxWidth: width, height }"
@@ -59,7 +65,7 @@ interface Props {
   fullWidth: boolean;
   fullHeight: boolean;
   okDisabled: boolean;
-  noRouteDismiss: boolean
+  noRouteDismiss: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   platform: Platform.WEB,
@@ -125,11 +131,11 @@ const onCancel = () => {
   onDialogCancel();
 };
 
-const hiddenDialog = () => {      
+const hiddenDialog = () => {
   if (hidden) {
     emits('onHide');
-  }  
-}
+  }
+};
 
 const onSkip = () => {
   emits('onSkip');
@@ -156,8 +162,13 @@ export default defineComponent({
     padding: 20px;
     .dialog-content {
       flex: 1;
-      padding: 20px 0 32px;
+      margin: 20px 0 32px;
       width: 100%;
+      max-height: calc(100vh * 0.75);
+      overflow: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 }
