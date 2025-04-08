@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import { useDialogPluginComponent } from 'quasar';
-import { ref, defineProps, computed } from 'vue';
+import { ref, defineProps, computed, watch } from 'vue';
 
 import DialogBar from './DialogBar.vue';
 import DialogFooter from './DialogFooter.vue';
@@ -66,6 +66,7 @@ interface Props {
   fullHeight: boolean;
   okDisabled: boolean;
   noRouteDismiss: boolean;
+  modelValue?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   platform: Platform.WEB,
@@ -80,12 +81,18 @@ const props = withDefaults(defineProps<Props>(), {
   noRouteDismiss: false
 });
 
-const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide']);
+const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide', 'update:modelValue']);
 
-const { dialogRef, onDialogCancel, onDialogOK, onDialogHide } =
-  useDialogPluginComponent();
+const { dialogRef, onDialogCancel, onDialogOK, onDialogHide } = useDialogPluginComponent();
 
-const show = ref(true);
+const show = ref(props.modelValue ?? true);
+
+watch(() => props.modelValue, (newValue) => {
+  if (newValue !== undefined) {
+    show.value = newValue;
+  }
+});
+
 const widthRatio = ref(0.86);
 const heightRatio = ref(0.75);
 
@@ -134,6 +141,9 @@ const onCancel = () => {
 const hiddenDialog = () => {
   if (hidden) {
     emits('onHide');
+  }
+  if (props.modelValue !== undefined) {
+    emits('update:modelValue', false);
   }
 };
 
