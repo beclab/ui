@@ -166,6 +166,7 @@ const onSkip = () => {
   margin-left: 12px;
   &.ok-disabled {
     opacity: 0.5;
+    cursor: not-allowed !important;
   }
 }
 .but-cancel {
