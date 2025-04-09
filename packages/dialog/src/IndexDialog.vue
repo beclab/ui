@@ -65,7 +65,7 @@ const props = defineProps({
     },
     title: {
         type: String,
-        default: 'Alert',
+        default: '',
         required: false
     },
     icon: {

@@ -27,7 +27,7 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/qua
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | platform | Web or Mobile | string | web |  |
-| title | title | string | Alert |  |
+| title | title | string | '' |  |
 | message | message | string |  |  |
 | icon | icon | string |  |  |
 | ok | Confirmed events at the bottom | string \ number | true |  |

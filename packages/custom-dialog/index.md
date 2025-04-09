@@ -12,7 +12,7 @@ API properties extends from Quasar [QDialogOptions](http://www.quasarchs.com/vue
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
 | size | large, medium or small | string | small |  |
-| title | title | string | Alert |  |
+| title | title | string |  |
 | icon | header bar icon | string |  |  |
 | ok | confirm text or concealment of the event | string \ number | true |  |
 | cancel | cancel text or concealment of the event | string \ number | true |  |
