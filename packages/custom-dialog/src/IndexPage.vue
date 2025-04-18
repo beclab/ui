@@ -7,7 +7,7 @@
     :noRouteDismiss="noRouteDismiss"
   >
     <q-card
-      class="card-container no-shadow column"
+      class="card-container no-shadow column no-wrap"
       :style="{ width, maxWidth: width, height }"
     >
       <dialog-bar
@@ -78,19 +78,20 @@ const props = withDefaults(defineProps<Props>(), {
   fullWidth: false,
   fullHeight: false,
   okDisabled: false,
-  noRouteDismiss: false
+  noRouteDismiss: false,
+  modelValue: true
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide', 'update:modelValue']);
 
 const { dialogRef, onDialogCancel, onDialogOK, onDialogHide } = useDialogPluginComponent();
 
-const show = ref(props.modelValue ?? true);
+console.log(props.modelValue)
+
+const show = ref(props.modelValue);
 
 watch(() => props.modelValue, (newValue) => {
-  if (newValue !== undefined) {
     show.value = newValue;
-  }
 });
 
 const widthRatio = ref(0.86);
@@ -142,9 +143,7 @@ const hiddenDialog = () => {
   if (hidden) {
     emits('onHide');
   }
-  if (props.modelValue !== undefined) {
     emits('update:modelValue', false);
-  }
 };
 
 const onSkip = () => {
