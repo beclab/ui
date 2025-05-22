@@ -1,31 +1,35 @@
 .success-notify-class {
-  border: 1px solid #29CC5F !important;
+  border: 1px solid #29cc5f !important;
   border-radius: 20px !important;
-  background-image: linear-gradient(to right, #29CC5F1A, #29CC5F1A) !important;
+  background-image: linear-gradient(to right, #29cc5f1a, #29cc5f1a) !important;
 }
 
 .failed-notify-class {
-  border: 1px solid #FF4D4D !important;
+  border: 1px solid #ff4d4d !important;
   border-radius: 8px !important;
-  background-image: linear-gradient(to right, #E52E391A, #E52E391A) !important;
+  background-image: linear-gradient(to right, #e52e391a, #e52e391a) !important;
   // background-color: red;
   color: green;
 }
 
 .warning-notify-class {
-  border: 1px solid #FEBE01 !important;
+  border: 1px solid #febe01 !important;
   border-radius: 8px !important;
-  background-image: linear-gradient(to right, #FEBE011A, #FEBE011A) !important;
+  background-image: linear-gradient(to right, #febe011a, #febe011a) !important;
 }
 
 .loading-notify-class {
-  border: 1px solid #EBEBEB !important;
+  border: 1px solid #ebebeb !important;
   border-radius: 8px !important;
-  background-image: linear-gradient(to right, #F6F6F6, #F6F6F6) !important;
+  background-image: linear-gradient(to right, #f6f6f6, #f6f6f6) !important;
 }
 
 .progress-notify-class {
-  border: 1px solid #3377FF !important;
+  border: 1px solid #3377ff !important;
   border-radius: 8px !important;
-  background-image: linear-gradient(to right, #3377FF1A, #3377FF1A) !important;
+  background-image: linear-gradient(to right, #3377ff1a, #3377ff1a) !important;
+}
+
+.q-notification {
+  word-break: break-all !important;
 }
