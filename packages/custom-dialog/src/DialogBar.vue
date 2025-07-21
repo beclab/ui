@@ -27,21 +27,21 @@
 
 <script lang="ts" setup>
 defineProps({
-    platform: {
-        type: String,
-        default: 'web',
-        required: false
-    },
-    title: {
-        type: String,
-        default: '',
-        required: false
-    },
-    icon: {
-        type: String,
-        default: '',
-        required: false
-    }
+  platform: {
+    type: String,
+    default: 'web',
+    required: false
+  },
+  title: {
+    type: String,
+    default: '',
+    required: false
+  },
+  icon: {
+    type: String,
+    default: '',
+    required: false
+  }
 });
 
 const emits = defineEmits(['close']);
