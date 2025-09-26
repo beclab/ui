@@ -6,9 +6,7 @@
     <div v-else class="bar text-ink-1">
         <div class="head row items-center justify-between">
             <q-icon v-if="icon" class="icon q-mr-sm" :name="icon"/>
-            <div class="title col text-ink-1 text-left">
-                {{ title }}
-            </div>
+            <div class="title col text-ink-1 text-left" v-html="title"></div>
         </div>
 
         <q-btn

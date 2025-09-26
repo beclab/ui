@@ -11,12 +11,18 @@
             class="card-container no-shadow column no-wrap"
             :style="{ width, maxWidth: width, height }"
         >
-            <dialog-bar
-                :title="title"
-                :icon="icon"
-                :platform="platform"
-                @close="onCancel"
-            />
+     
+            <template v-if="$slots.header">
+                <slot name="header"></slot>
+            </template>
+            <template v-else>
+                <dialog-bar
+                    :title="title"
+                    :icon="icon"
+                    :platform="platform"
+                    @close="onCancel"
+                />
+            </template>
 
             <div class="dialog-content">
                 <slot/>
@@ -69,6 +75,8 @@ interface Props {
     okDisabled: boolean;
     noRouteDismiss: boolean;
     modelValue?: boolean;
+    barRedefined?: boolean;
+    cancelDismiss: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -83,7 +91,9 @@ const props = withDefaults(defineProps<Props>(), {
     fullHeight: false,
     okDisabled: false,
     noRouteDismiss: false,
-    modelValue: true
+    modelValue: true,
+    barRedefined: false,
+    cancelDismiss: true
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide', 'update:modelValue']);
@@ -140,7 +150,10 @@ let hidden = true;
 const onCancel = () => {
     hidden = false;
     emits('onCancel');
-    onDialogCancel();
+    if (props.cancelDismiss) {
+        onDialogCancel();
+    }
+
 };
 
 const hiddenDialog = () => {
