@@ -10,7 +10,7 @@
             :style="{ width: cancel ? '48%' : '100%', ...okStyle }">
             {{ loading === true ? 'Loading' : loading }}
         </q-btn>
-        <q-btn v-if="ok && !loading" class="but-mobile-confirm" :class="okButtonClass" no-caps flat
+        <q-btn v-if="ok && !loading" class="but-mobile-confirm" :class="okButtonClass" no-caps flat :disable="okDisabled"
             :style="{ width: cancel ? '48%' : '100%', ...okStyle }" @click="onSubmit">
             {{ ok === true ? 'Confirm' : ok }}
         </q-btn>
@@ -86,7 +86,11 @@ const props = defineProps({
 const defaultOkClass = inject<string>('defaultOkClass');
 
 const okButtonClass = computed(() => {
-    return props.okClass || defaultOkClass;
+    let classes = props.okClass || defaultOkClass;
+    if (props.okDisabled) {
+        classes = classes + ' ' + 'ok-disabled';
+    }
+    return classes
 });
 
 const emit = defineEmits(['onCancel', 'onSubmit', 'onSkip']);
@@ -165,5 +169,9 @@ const onSkip = () => {
     font-size: 16px;
     font-weight: 500;
     border-radius: 8px;
+     &.ok-disabled {
+        opacity: 0.5;
+        cursor: not-allowed !important;
+    }
 }
 </style>
