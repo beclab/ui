@@ -3,13 +3,14 @@
         class="card-dialog"
         ref="dialogRef"
         v-model="show"
+        :position="position"
         :persistent="persistent"
         @hide="hiddenDialog"
         :noRouteDismiss="noRouteDismiss"
     >
         <q-card
             class="card-container no-shadow column no-wrap"
-            :style="{ width, maxWidth: width, height }"
+            :style="{ width, maxWidth: width, height, padding: (!contentPending ? '0px' : '20px') }"
         >
      
             <template v-if="$slots.header">
@@ -77,6 +78,8 @@ interface Props {
     modelValue?: boolean;
     barRedefined?: boolean;
     cancelDismiss: boolean;
+    position: "standard" | "top" | "right" | "bottom" | "left",
+    contentPending: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -93,7 +96,9 @@ const props = withDefaults(defineProps<Props>(), {
     noRouteDismiss: false,
     modelValue: true,
     barRedefined: false,
-    cancelDismiss: true
+    cancelDismiss: true,
+    position: 'standard',
+    contentPending: true
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide', 'update:modelValue']);
@@ -186,7 +191,6 @@ export default defineComponent({
 .card-dialog {
     .card-container {
         border-radius: 12px;
-        padding: 20px;
 
         .dialog-content {
             flex: 1;
