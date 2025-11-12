@@ -24,7 +24,9 @@
         <slot name="footerMore" />
 
         <div class="row justify-center items-center">
-            <q-item v-if="cancel" clickable dense class="but-cancel row justify-center items-center" @click="onCancel">
+            <q-item v-if="cancel" clickable dense class="but-cancel row justify-center items-center" @click="onCancel" :class="{
+                'but-cancel-disable-focus': disableCancelFucus
+            }">
                 {{ cancel === true ? 'Cancel' : cancel }}
             </q-item>
             <q-item v-if="ok && loading" dense class="but-create row justify-center items-center" :style="okStyle"
@@ -64,6 +66,10 @@ const props = defineProps({
     cancel: {
         type: [String, Boolean],
         default: false,
+        required: false
+    },
+    disableCancelFucus: {
+        type: Boolean,
         required: false
     },
     loading: {
@@ -136,6 +142,11 @@ const onSkip = () => {
     line-height: 24px;
 }
 
+
+.but-cancel-disable-focus {
+    
+}
+
 .but-skip {
     min-width: 100px;
     position: absolute;
@@ -173,5 +184,11 @@ const onSkip = () => {
         opacity: 0.5;
         cursor: not-allowed !important;
     }
+}
+
+::v-deep(.but-cancel-disable-focus) {
+	.q-focus-helper {
+		opacity: 0 !important;
+	}
 }
 </style>

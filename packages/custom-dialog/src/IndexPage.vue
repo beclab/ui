@@ -38,6 +38,7 @@
                 :skip="skip"
                 :okDisabled="okDisabled"
                 :okClass="okClass"
+                :disableCancelFucus="disableCancelFucus"
                 @onCancel="onCancel"
                 @onSubmit="onSubmit"
                 @onSkip="onSkip"
@@ -80,6 +81,7 @@ interface Props {
     cancelDismiss: boolean;
     position: "standard" | "top" | "right" | "bottom" | "left",
     contentPending: boolean;
+    disableCancelFucus: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -98,7 +100,8 @@ const props = withDefaults(defineProps<Props>(), {
     barRedefined: false,
     cancelDismiss: true,
     position: 'standard',
-    contentPending: true
+    contentPending: true,
+    disableCancelFucus: false
 });
 
 const emits = defineEmits(['onSubmit', 'onCancel', 'onSkip', 'onHide', 'update:modelValue']);
