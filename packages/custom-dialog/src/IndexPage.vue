@@ -10,7 +10,8 @@
     >
         <q-card
             class="card-container no-shadow column no-wrap"
-            :style="{ width, maxWidth: width, height, padding: (!contentPending ? '0px' : '20px') }"
+            :class="paddingC"
+            :style="{ width, maxWidth: width, height }"
         >
      
             <template v-if="$slots.header">
@@ -175,6 +176,20 @@ const onSkip = () => {
     emits('onSkip');
 };
 
+const paddingC = computed(()=> {
+    if (props.contentPending) {
+        if (props.position == 'bottom') {
+            return 'position-bottom normal-bottom-pending'
+        }
+        return 'normal-pending'
+    }
+
+    if (props.position == 'bottom') {
+        return 'position-bottom normal-disable-bottom-pending'
+    }
+    return 'normal-disable-pending'
+})
+
 defineExpose({
     onDialogOK,
     onDialogCancel,
@@ -206,6 +221,30 @@ export default defineComponent({
                 display: none;
             }
         }
+    }
+
+    .position-bottom {
+        position: fixed;
+	    bottom: 0;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .normal-pending {
+        padding: 20px;
+    }
+
+    .normal-bottom-pending {
+        padding: 20px;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
+    }
+    
+    .normal-disable-pending {
+        padding: 0px;
+    }
+
+    .normal-disable-bottom-pending {
+        padding: 0px;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 }
 </style>
