@@ -9,6 +9,7 @@
         :accept="accept"
         type="file"
         :multiple="false"
+        title=""
       />
       <slot class="slot"/>
     </div>
